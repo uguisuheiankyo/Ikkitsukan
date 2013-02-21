@@ -1,4 +1,11 @@
 package tools
+/* A Sample to use this class
+ * var process:CommandLineProcess = new CommandLineProcess;
+ * process.appName = "Say";
+ * process.arguments = "Hello World.";
+ * process.addEventListener(NativeProcessExitEvent.EXIT, exitHandler);
+ * process.run();
+*/
 {
 	import flash.desktop.NativeProcess;
 	import flash.desktop.NativeProcessStartupInfo;

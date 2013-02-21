@@ -8,28 +8,5 @@
 	<fx:Declarations>
 		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
 	</fx:Declarations>
-	<fx:Script>
-		<![CDATA[
-			import flash.events.NativeProcessExitEvent;
-			
-			import mx.controls.Alert;
-			import mx.events.AIREvent;
-			
-			import tools.CommandLineProcess;
-			
-			protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
-			{
-				var process:CommandLineProcess = new CommandLineProcess;
-				process.appName = "Say";
-				process.arguments = "Hello World.";
-				process.run();
-				process.addEventListener(NativeProcessExitEvent.EXIT, exitHandler);
-			}
-			
-			private function exitHandler(event:NativeProcessExitEvent):void {
-				trace("owari");
-			}
-			
-		]]>
-	</fx:Script>
+	<fx:Script source="ikkitsukan.as" />
 </s:WindowedApplication>
