@@ -3,6 +3,8 @@ package tools
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
+	import flash.utils.ByteArray;
+	import flash.utils.IDataInput;
 
 	public class Indexing
 	{
@@ -11,16 +13,21 @@ package tools
 		private var sdDir:File;
 		private var presDir:File;
 		private var pptx_info:File;
+		private var crypto:Crypto;
 		
 		public function Indexing()
 		{
 			process = new CommandLineProcess();
 			stream = new FileStream();
 			sdDir = File.applicationStorageDirectory;
+			crypto = new Crypto();
 		}
 		
 		public function run():void {
-		    
+		    // 
+			var pptx:File = new File("/Users/Hiroyuki/Desktop/example.pptx");
+			crypto.cryptoMD5(pptx);
+			
 		}
 		
 		// Check the state in StorageDirectory
@@ -40,7 +47,6 @@ package tools
 				stream.close();
 			}
 		}
-		
 		
 	}
 }

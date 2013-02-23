@@ -5,7 +5,7 @@ package tools
  * process.arguments = "Hello World.";
  * process.addEventListener(NativeProcessExitEvent.EXIT, exitHandler);
  * process.run();
-*/
+ */
 {
 	import flash.desktop.NativeProcess;
 	import flash.desktop.NativeProcessStartupInfo;

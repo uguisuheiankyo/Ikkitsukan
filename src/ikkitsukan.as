@@ -13,5 +13,6 @@ import tools.Indexing;
 protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
 {
 	var indexing:Indexing = new Indexing();
-	indexing.initialize();
+	//indexing.initialize();
+	indexing.run();
 }
