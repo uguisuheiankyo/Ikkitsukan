@@ -26,6 +26,7 @@ package tools
 		private var flag_findPPTX:Boolean = false;
 		private var flag_getPPTXPaths:Boolean = false;
 		private var flag_renovatePPTXInfo:Boolean = false;
+		private var flag_loadExistingPPTXInfo:Boolean = false;
 		
 		private const PPTX_INFO_FILE:String = "pptx_info.txt";
 		
@@ -52,7 +53,10 @@ package tools
 			// Get all paths of all pptx files
 			else if(!flag_getPPTXPaths) getPPTXPaths();
 			
-			// Check md5 value of pptx and compare with other md5 in pptx_info
+			// Load the existing pptx_info file
+			else if(!flag_loadExistingPPTXInfo) loadExistingPPTXInfo();
+			
+			// Renovate pptx_info file
 			else if(!flag_renovatePPTXInfo) renovatePPTXInfo();
 		}
 		
@@ -64,9 +68,10 @@ package tools
 					flag_initialize = true; run(); break;
 				case "FoundPPTX":
 					flag_findPPTX = true; run(); break;
-					break;
 				case "GotPPTXPaths":
 					flag_getPPTXPaths = true; run(); break;
+				case "LoadedExistingPPTXInfo":
+					flag_loadExistingPPTXInfo = true; run(); break;
 				case "RenovatedPPTXInfo":
 					flag_renovatePPTXInfo = true; run(); break;
 					break;
@@ -106,40 +111,81 @@ package tools
 		public function getPPTXPaths():void {
 			var file:File = presDir.resolvePath("pptx_paths.txt");
 			_allPPTXPaths = readLines(file);
-			trace("Find " + _allPPTXPaths.length + "files");
+			trace("Find " + _allPPTXPaths.length + " files");
 			notificationEventHandler(new NotificationEvent("notificationEvent", "GotPPTXPaths", null));
 		}
-				
-		// Renovate md5, name, date informations in pptx_info
-		public function renovatePPTXInfo():void {
+		
+		// Check pptx_infos with old pptx_infos
+		private function loadExistingPPTXInfo():void {
+			trace("Loading... pptx_info file");
 			var pptx_info_txt:File = presDir.resolvePath(PPTX_INFO_FILE);
-			var pptx_info_raws:Array = readLines(pptx_info_txt);
-			trace("\"" + pptx_info_raws.length + "\"");
+			var pptx_info_array:Array = readLines(pptx_info_txt);
+			_pptx_infos = this.readPPTXInfos(pptx_info_array);
+			notificationEventHandler(new NotificationEvent("notificationEvent", "LoadedExistingPPTXInfo", null));
+		}
+		
+		// Renovate md5, filepath, name, date informations in pptx_info
+		public function renovatePPTXInfo():void {
 			
 			// If the pptx_info file is empty,
 			// all pptx files will be registered into pptx_info
-			_pptx_infos = new Vector.<PPTXInfo>;
-			if(pptx_info_raws.length == 1 && pptx_info_raws[0] == "") {
-				for each( var pptx_path:String in _allPPTXPaths) {
-					trace("Indexing... " + pptx_path);
-					_pptx_infos.push(registerPPTXInfo(pptx_path));
+			var pptx_path:String;
+			if(_pptx_infos == null) {
+				_pptx_infos = new Vector.<PPTXInfo>;
+				for each( pptx_path in _allPPTXPaths) {
+					trace("Adding... " + pptx_path);
+					_pptx_infos.push(getPPTXInfo(pptx_path));
+					automator.createPDFandImages(pptx_path);
 				}
-				// Write pptx_infos into the pptx_info file
-				writePPTXInfos(_pptx_infos);
 			}
-				
+			
 			else {
-				
-			}	
+				var pptx_info:PPTXInfo;
+				var indexOfSameMD5:int;
+				var indexOfSameFilepath:int;
+				for each(pptx_path in _allPPTXPaths) {
+					pptx_info = getPPTXInfo(pptx_path);
+					indexOfSameMD5 = hasSameMD5(pptx_info.md5);
+					indexOfSameFilepath = hasSameFilepath(pptx_info.filepath);
+					
+					if( indexOfSameMD5 >= 0) {
+						if( pptx_info.filepath == _pptx_infos[indexOfSameMD5].filepath ) {
+							// old pptx_info file already has this pptx informations.
+							trace("Don't need to renovate: " + pptx_info.filepath);
+						}
+						else {
+							// old pptx_info file already has the same md5 value as to this pptx.
+							// need to renovate file path.
+							// If there are duplicated files, this system will choice only one pptx file.
+							trace("Change " + _pptx_infos[indexOfSameMD5].filepath + " to " + pptx_info.filepath);
+							_pptx_infos[indexOfSameMD5].filepath = pptx_info.filepath;
+						}
+					}
+					else if( indexOfSameFilepath >= 0 ) {
+						// old pptx_info file already has has the same filepath.
+						// need to delete pptx_infos[i] and create anew one
+						// because the previous file had the same filepath was edited or deleted.
+						_pptx_infos.splice(indexOfSameFilepath,indexOfSameFilepath);
+						_pptx_infos.push(pptx_info);
+						automator.createPDFandImages(pptx_path);
+						trace("Adding... " + pptx_info.filepath);
+					}
+					else {
+						// old pptx_info file doesn't have this pptx_info.
+						// need to add all pptx_info and create the pdf and images.
+						_pptx_infos.push(pptx_info);
+						automator.createPDFandImages(pptx_path);
+						trace("Adding... " + pptx_info.filepath);
+					}
+				}
+			}
+			// Write pptx_infos into the pptx_info file
+			writePPTXInfos(_pptx_infos);
+			trace("Writing... " + PPTX_INFO_FILE);
 		}
 		
-		// If add md5 value anew,
-		// Create a pdf file and extract images in ppt,pptx.
-		
-		
-		
 		// Register pptx_info
-		private function registerPPTXInfo(pptx_path:String):PPTXInfo {
+		private function getPPTXInfo(pptx_path:String):PPTXInfo {
 			var crypto:Crypto = new Crypto();
 			var pptx:File = new File(pptx_path);
 			var pptx_info:PPTXInfo = new PPTXInfo();
@@ -150,28 +196,38 @@ package tools
 			return pptx_info;
 		}
 		
-		// Store old pptx_infos
-		private function readPPTXInfo(pptx_info_raws:Array):void {
-			var old_pptx_infos:Vector.<PPTXInfo> = new Vector.<PPTXInfo>;
-			for each(var pptx_info_raw:String in pptx_info_raws) {
-				var old_pptx_info:PPTXInfo = new PPTXInfo();
-				var array:Array = pptx_info_raw.split(",");
-				old_pptx_info.md5 = array[0];
-				old_pptx_info.filepath = array[1];
-				old_pptx_info.filename = array[2];
-				old_pptx_info.date = array[3];
-				old_pptx_infos.push(old_pptx_info);
+		// Read existing pptx informations from pptx_info
+		private function readPPTXInfos(pptx_info_array:Array):Vector.<PPTXInfo> {
+			var pptx_infos:Vector.<PPTXInfo> = new Vector.<PPTXInfo>;
+			
+			// There is no informations in pptx_info file
+			if(pptx_info_array[0] == "") {
+				pptx_infos = null;
 			}
+			
+			else {
+				for each(var pptx_info_raw:String in pptx_info_array) {
+					var pptx_info:PPTXInfo = new PPTXInfo();
+					var array:Array = pptx_info_raw.split(",");
+					pptx_info.md5 = array[0];
+					pptx_info.filepath = array[1];
+					pptx_info.filename = array[2];
+					pptx_info.date = new Date(array[3]);
+					pptx_infos.push(pptx_info);
+				}
+			}
+			
+			return pptx_infos;
 		}
 		
 		// Write pptx_infos to the pptx_info file
 		private function writePPTXInfos(pptx_infos:Vector.<PPTXInfo>):void {
 			var str:String = "";
-			for each(var pptx_info:PPTXInfo in pptx_infos) {
+			for each(var pptx_info:PPTXInfo in _pptx_infos) {
 				trace("Recording... " + pptx_info.filepath);
 				str += pptx_info.md5 + "," + pptx_info.filepath + "," + pptx_info.filename + "," + pptx_info.date.toString() + "\n";
 			}
-			writeText(presDir.resolvePath(PPTX_INFO_FILE),str);
+			writeText(presDir.resolvePath(PPTX_INFO_FILE),str.substr(0,str.length-2)); // delete the last of "\n"
 		}
 		
 		// Read Lines from a text file and Store each line into an array
@@ -191,20 +247,26 @@ package tools
 			stream.close();
 		}
 		
-		// pptx_infos has the same md5 as to an new pptx
-		private function hasSameMD5(md5:String, pptx_infos:Vector.<PPTXInfo>):Boolean {
-			for( var i:int = pptx_infos.length-1; i >= 0; i--) {
-				if( md5 == pptx_infos[i].md5 ) return true;
+		//////////////////////////////////
+		// pptx_infosのクラス化の必要あり
+		//////////////////////////////////
+		private function hasSameMD5(md5:String):int {
+			for( var i:int = _pptx_infos.length-1; i >= 0; i--) {
+				if( md5 == _pptx_infos[i].md5 ) {
+					return i;
+				}
 			}
-			return false;
+			return -1;
 		}
 		
-		// pptx_infos has the same filepath as to an new pptx
-		private function hasSameFilepath(filepath:String, pptx_infos:Vector.<PPTXInfo>):Boolean {
-			for( var i:int = pptx_infos.length-1; i >= 0; i--) {
-				if( filepath == pptx_infos[i].filepath ) return true;
+		private function hasSameFilepath(filepath:String):int {
+			for( var i:int = _pptx_infos.length-1; i >= 0; i--) {
+				if( filepath == _pptx_infos[i].filepath ) {
+					return i;
+				}
 			}
-			return false;
+			return -1;
 		}
+		
 	}
 }

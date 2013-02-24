@@ -29,10 +29,20 @@ package tools
 			process.run();
 		}
 		
+		public function createPDFandImages(filepath:String):void {
+			
+		}
+		
 		private function finSearchPPTX(event:NativeProcessExitEvent):void {
 			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","FoundPPTX", null);
 			this.dispatchEvent(notificationEvent);
 		}
+		
+		private function finCreatePDFandImages(event:NativeProcessExitEvent):void {
+			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages", null);
+			this.dispatchEvent(notificationEvent);
+		}
+		
 		
 	}
 }
