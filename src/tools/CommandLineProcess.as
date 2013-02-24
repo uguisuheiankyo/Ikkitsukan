@@ -9,10 +9,14 @@ package tools
 {
 	import flash.desktop.NativeProcess;
 	import flash.desktop.NativeProcessStartupInfo;
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import flash.events.IOErrorEvent;
 	import flash.events.NativeProcessExitEvent;
+	import flash.events.ProgressEvent;
 	import flash.filesystem.File;
-	import flash.events.Event;	
+	import flash.utils.ByteArray;
+	
 	import mx.controls.Alert;
 
 	public class CommandLineProcess extends EventDispatcher
@@ -21,6 +25,7 @@ package tools
 		private var _arguments:String;
 		private var process:NativeProcess;
 		private var nativeProcessStartupInfo:NativeProcessStartupInfo;
+		private var _outputData:String; // For Debug
 		
 		public function CommandLineProcess() {
 			process = new NativeProcess();
@@ -57,9 +62,17 @@ package tools
 			nativeProcessStartupInfo.executable = appFile;
 			nativeProcessStartupInfo.arguments = args;
 			
+			// リスナー
+			process.addEventListener(NativeProcessExitEvent.EXIT, relay);
+			
+			process.addEventListener(ProgressEvent.STANDARD_OUTPUT_DATA, onOutputData);
+			process.addEventListener(ProgressEvent.STANDARD_ERROR_DATA, onErrorData);
+			process.addEventListener(NativeProcessExitEvent.EXIT, onExit);
+			process.addEventListener(IOErrorEvent.STANDARD_OUTPUT_IO_ERROR, onIOError);
+			process.addEventListener(IOErrorEvent.STANDARD_ERROR_IO_ERROR, onIOError);
+			
 			// 実行
 			process.start(nativeProcessStartupInfo);
-			process.addEventListener(NativeProcessExitEvent.EXIT, relay);
 		    
 		}
 		
@@ -71,13 +84,39 @@ package tools
 		// Add application names and paths in a following function
 		private function getAppPath(appName:String):String {
 			switch(appName) {
-				case "Automator":
-					return "/usr/bin/automaor";
-				case "Say":
+				case "automator":
+					return "/usr/bin/automator";
+				case "say":
 					return "/usr/bin/say";
+				case "pwd":
+					return "/bin/pwd";
 				default:
-					return null;
+					return appName;
 			}
+		}
+		
+		//////////////
+		// For Debug
+		//////////////
+		
+		public function onOutputData(event:ProgressEvent):void {
+			_outputData = process.standardOutput.readUTFBytes(process.standardOutput.bytesAvailable).toString();
+			trace("Got: ", _outputData); 
+		}
+		public function onErrorData(event:ProgressEvent):void {
+			_outputData = process.standardError.readUTFBytes(process.standardError.bytesAvailable).toString();
+			trace("ERROR -", _outputData); 
+		}
+		public function onExit(event:NativeProcessExitEvent):void {
+			_outputData = event.exitCode.toString();
+			trace("Process exited with ", _outputData);
+		}
+		public function onIOError(event:IOErrorEvent):void {
+			_outputData = event.toString();
+			trace(_outputData);
+		}
+		public function get outputData():String {
+			return _outputData;
 		}
 	}
 }

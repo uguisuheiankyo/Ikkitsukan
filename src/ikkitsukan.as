@@ -9,10 +9,11 @@ import mx.events.AIREvent;
 
 import tools.CommandLineProcess;
 import tools.Indexing;
-
+private var process:CommandLineProcess;
 protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
 {
 	var indexing:Indexing = new Indexing();
-	//indexing.initialize();
-	indexing.run();
+	indexing.initialize();
+	indexing.checkMD5();
+	//indexing.run();
 }
