@@ -13,7 +13,5 @@ private var process:CommandLineProcess;
 protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
 {
 	var indexing:Indexing = new Indexing();
-	indexing.initialize();
-	indexing.checkMD5();
-	//indexing.run();
+	indexing.run();
 }
