@@ -75,6 +75,8 @@ package tools
 				case "RenovatedPPTXInfo":
 					flag_renovatePPTXInfo = true; run(); break;
 				case "CreatedPDFandImages":
+					trace(this.tmp_pptx_info.length);
+					if(this.tmp_pptx_info.length != 0) { automator.createPDFandImages(tmp_pptx_info.pop()); }
 					break;
 			}
 		}
@@ -186,8 +188,9 @@ package tools
 				}
 			}
 			
+			// 2013-02-28
 			automator.createPDFandImages(tmp_pptx_info.pop());
-			
+			this.flag_renovatePPTXInfo = true;
 			
 			// Write pptx_infos into the pptx_info file
 			writePPTXInfos(_pptx_infos);

@@ -57,6 +57,7 @@ package tools
 		
 		public function moveIn2Directory(orgpath:String, destpath:String):void {
 			orgpath = orgpath.substr(0, orgpath.length - 4) + "pdf";
+			destpath = destpath.substr(0, destpath.length - 4) + "pdf";
 			trace(orgpath);
 			trace(destpath);
 			var original:File = new File(orgpath);
@@ -65,7 +66,7 @@ package tools
 			trace("destination: " + destination.exists);
 			original.addEventListener(Event.COMPLETE, fileMoveCompleteHandler); 
 			original.addEventListener(IOErrorEvent.IO_ERROR, fileMoveIOErrorEventHandler); 
-			original.moveTo(destination);
+			original.moveTo(destination,true);
 //			var args:Vector.<String> = new Vector.<String>;
 //			args.push(filepath);
 //			args.push(dirpath);
@@ -86,7 +87,7 @@ package tools
 		}
 		
 		private function finCreatePDFandImages(event:NativeProcessExitEvent):void {
-			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","RenovatedPPTXInfo", null); // For debug
+			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages", null); // For debug
 			this.divideUpPDFandImages(this.tmp_pptx_info);
 			//var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages", null);
 			this.dispatchEvent(notificationEvent);
