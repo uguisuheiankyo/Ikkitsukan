@@ -22,7 +22,7 @@ package tools
 	public class CommandLineProcess extends EventDispatcher
 	{
 		private var _appName:String;
-		private var _arguments:String;
+		private var _arguments:Vector.<String>;
 		private var process:NativeProcess;
 		private var nativeProcessStartupInfo:NativeProcessStartupInfo;
 		private var _outputData:String; // For Debug
@@ -33,8 +33,8 @@ package tools
 		}
 		
 		// getter and setter
-		public function get arguments():String { return _arguments; }
-		public function set arguments(value:String):void { _arguments = value; }
+		public function get arguments():Vector.<String> { return _arguments; }
+		public function set arguments(value:Vector.<String>):void { _arguments = value; }
 		public function get appName():String { return _appName; }
 		public function set appName(value:String):void { _appName = value; }
 		
@@ -55,8 +55,9 @@ package tools
 			}
 			
 			// 引数指定
-			var args:Vector.<String> = new Vector.<String>();
-			args.push(_arguments);
+			var args:Vector.<String> = _arguments;
+			//var args:Vector.<String> = new Vector.<String>();
+			//args.push(_arguments);
 			
 			// 実行情報の指定
 			nativeProcessStartupInfo.executable = appFile;
@@ -86,6 +87,8 @@ package tools
 			switch(appName) {
 				case "automator":
 					return "/usr/bin/automator";
+				case "mv":
+					return "/bin/mv";
 				case "say":
 					return "/usr/bin/say";
 				case "pwd":

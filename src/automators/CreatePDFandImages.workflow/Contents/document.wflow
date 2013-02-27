@@ -18,172 +18,6 @@
 					<key>Container</key>
 					<string>List</string>
 					<key>Optional</key>
-					<true/>
-					<key>Types</key>
-					<array>
-						<string>com.apple.cocoa.path</string>
-					</array>
-				</dict>
-				<key>AMActionVersion</key>
-				<string>1.2.1</string>
-				<key>AMApplication</key>
-				<array>
-					<string>Finder</string>
-				</array>
-				<key>AMParameterProperties</key>
-				<dict>
-					<key>defaultLocation</key>
-					<dict>
-						<key>isPathPopUp</key>
-						<true/>
-						<key>variableUUIDsInMenu</key>
-						<array/>
-					</dict>
-					<key>granularity</key>
-					<dict/>
-					<key>multipleSelection</key>
-					<dict/>
-					<key>promptMessage</key>
-					<dict>
-						<key>tokenizedValue</key>
-						<array>
-							<string>Finder 項目を選択：</string>
-						</array>
-					</dict>
-				</dict>
-				<key>AMProvides</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Types</key>
-					<array>
-						<string>com.apple.cocoa.path</string>
-					</array>
-				</dict>
-				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Ask for Finder Items.action</string>
-				<key>ActionName</key>
-				<string>Finder 項目の選択を求める</string>
-				<key>ActionParameters</key>
-				<dict>
-					<key>defaultLocation</key>
-					<string>~/Desktop</string>
-					<key>granularity</key>
-					<integer>0</integer>
-					<key>multipleSelection</key>
-					<false/>
-					<key>promptMessage</key>
-					<string>Finder 項目を選択：</string>
-				</dict>
-				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.AskForFinderItems</string>
-				<key>CFBundleVersion</key>
-				<string>1.2.1</string>
-				<key>CanShowSelectedItemsWhenRun</key>
-				<true/>
-				<key>CanShowWhenRun</key>
-				<false/>
-				<key>Category</key>
-				<array>
-					<string>AMCategoryFilesAndFolders</string>
-				</array>
-				<key>Class Name</key>
-				<string>AMAskForFinderItemsAction</string>
-				<key>Disabled</key>
-				<true/>
-				<key>InputUUID</key>
-				<string>E815FA2C-B0CC-44E7-8EFE-24E241AD6AEB</string>
-				<key>Keywords</key>
-				<array>
-					<string>検索</string>
-					<string>項目</string>
-					<string>ファイル</string>
-					<string>フォルダ</string>
-					<string>確認</string>
-					<string>選択</string>
-					<string>プロンプト</string>
-				</array>
-				<key>OutputUUID</key>
-				<string>96E6D7EC-4552-40AE-B5F0-1A0605B8200F</string>
-				<key>UUID</key>
-				<string>F147E896-11A3-48BA-9A65-152FFCC83088</string>
-				<key>UnlocalizedApplications</key>
-				<array>
-					<string>Finder</string>
-				</array>
-				<key>arguments</key>
-				<dict>
-					<key>0</key>
-					<dict>
-						<key>default value</key>
-						<false/>
-						<key>name</key>
-						<string>multipleSelection</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>0</string>
-					</dict>
-					<key>1</key>
-					<dict>
-						<key>default value</key>
-						<integer>0</integer>
-						<key>name</key>
-						<string>granularity</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>1</string>
-					</dict>
-					<key>2</key>
-					<dict>
-						<key>default value</key>
-						<string>~/Desktop</string>
-						<key>name</key>
-						<string>defaultLocation</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>2</string>
-					</dict>
-					<key>3</key>
-					<dict>
-						<key>default value</key>
-						<string>Finder 項目を選択：</string>
-						<key>name</key>
-						<string>promptMessage</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>3</string>
-					</dict>
-				</dict>
-				<key>isViewVisible</key>
-				<false/>
-				<key>location</key>
-				<string>399.000000:1146.000000</string>
-				<key>nibPath</key>
-				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Japanese.lproj/main.nib</string>
-			</dict>
-			<key>isViewVisible</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>action</key>
-			<dict>
-				<key>AMAccepts</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Optional</key>
 					<false/>
 					<key>Types</key>
 					<array>
@@ -197,252 +31,7 @@
 					<string>Microsoft PowerPoint</string>
 				</array>
 				<key>AMParameterProperties</key>
-				<dict/>
-				<key>AMProvides</key>
 				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Types</key>
-					<array>
-						<string>com.microsoft.powerpoint.presentation.object</string>
-						<string>com.microsoft.powerpoint.slideshow.object</string>
-					</array>
-				</dict>
-				<key>AMRequiredResources</key>
-				<array>
-					<dict>
-						<key>Display Name</key>
-						<string>Microsoft PowerPoint</string>
-						<key>Resource</key>
-						<string>com.microsoft.powerpoint</string>
-						<key>Type</key>
-						<string>application</string>
-						<key>Version</key>
-						<string>14.0</string>
-					</dict>
-				</array>
-				<key>ActionBundlePath</key>
-				<string>/Library/Automator/Open PowerPoint Presentations.action</string>
-				<key>ActionName</key>
-				<string>PowerPoint プレゼンテーションを開く</string>
-				<key>ActionParameters</key>
-				<dict/>
-				<key>BundleIdentifier</key>
-				<string>com.microsoft.Automator.Open_PowerPoint_Presentations</string>
-				<key>CFBundleVersion</key>
-				<string>1.2</string>
-				<key>CanShowSelectedItemsWhenRun</key>
-				<false/>
-				<key>CanShowWhenRun</key>
-				<false/>
-				<key>Category</key>
-				<array>
-					<string>AMCategoryPresentations</string>
-				</array>
-				<key>Class Name</key>
-				<string>AMAppleScriptAction</string>
-				<key>InputUUID</key>
-				<string>2348FDF9-F6F0-4AF9-A719-5C3018FEEBAE</string>
-				<key>Keywords</key>
-				<array>
-					<string>表示</string>
-				</array>
-				<key>OutputUUID</key>
-				<string>84224F64-D924-41B3-A030-6DCFC703F281</string>
-				<key>UUID</key>
-				<string>7D0AA722-D068-401B-95CA-59E6A5839B20</string>
-				<key>UnlocalizedApplications</key>
-				<array>
-					<string>Microsoft PowerPoint</string>
-				</array>
-				<key>arguments</key>
-				<dict/>
-				<key>isViewVisible</key>
-				<true/>
-				<key>location</key>
-				<string>399.000000:1104.000000</string>
-				<key>nibPath</key>
-				<string>/Library/Automator/Open PowerPoint Presentations.action/Contents/Resources/ja.lproj/main.nib</string>
-			</dict>
-			<key>isViewVisible</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>action</key>
-			<dict>
-				<key>AMAccepts</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Optional</key>
-					<true/>
-					<key>Types</key>
-					<array>
-						<string>com.microsoft.powerpoint.presentation.object</string>
-						<string>com.microsoft.powerpoint.slideshow.object</string>
-					</array>
-				</dict>
-				<key>AMActionVersion</key>
-				<string>1.2</string>
-				<key>AMApplication</key>
-				<array>
-					<string>Microsoft PowerPoint</string>
-				</array>
-				<key>AMParameterProperties</key>
-				<dict>
-					<key>fromSlide</key>
-					<dict/>
-					<key>selectionOption</key>
-					<dict/>
-					<key>toSlide</key>
-					<dict/>
-				</dict>
-				<key>AMProvides</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Types</key>
-					<array>
-						<string>com.microsoft.powerpoint.slide.object</string>
-					</array>
-				</dict>
-				<key>AMRequiredResources</key>
-				<array>
-					<dict>
-						<key>Display Name</key>
-						<string>Microsoft PowerPoint</string>
-						<key>Resource</key>
-						<string>com.microsoft.powerpoint</string>
-						<key>Type</key>
-						<string>application</string>
-						<key>Version</key>
-						<string>14.0</string>
-					</dict>
-				</array>
-				<key>ActionBundlePath</key>
-				<string>/Library/Automator/Select PowerPoint Slides.action</string>
-				<key>ActionName</key>
-				<string>PowerPoint スライドの選択</string>
-				<key>ActionParameters</key>
-				<dict>
-					<key>fromSlide</key>
-					<string>1</string>
-					<key>selectionOption</key>
-					<integer>0</integer>
-					<key>toSlide</key>
-					<string>1</string>
-				</dict>
-				<key>BundleIdentifier</key>
-				<string>com.microsoft.Automator.Select_PowerPoint_Slides</string>
-				<key>CFBundleVersion</key>
-				<string>1.2</string>
-				<key>CanShowSelectedItemsWhenRun</key>
-				<false/>
-				<key>CanShowWhenRun</key>
-				<true/>
-				<key>Category</key>
-				<array>
-					<string>AMCategoryPresentations</string>
-				</array>
-				<key>Class Name</key>
-				<string>AMAppleScriptAction</string>
-				<key>InputUUID</key>
-				<string>3B4FDA50-AB56-4B72-9FB1-D8E5AD6D324E</string>
-				<key>Keywords</key>
-				<array>
-					<string>選択</string>
-				</array>
-				<key>OutputUUID</key>
-				<string>8D0B419A-2BAF-44BC-8EFD-DAA0D8E9108D</string>
-				<key>UUID</key>
-				<string>7441A448-DEBA-45C7-9705-5A00944603B9</string>
-				<key>UnlocalizedApplications</key>
-				<array>
-					<string>Microsoft PowerPoint</string>
-				</array>
-				<key>arguments</key>
-				<dict>
-					<key>0</key>
-					<dict>
-						<key>default value</key>
-						<string>1</string>
-						<key>name</key>
-						<string>toSlide</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>0</string>
-					</dict>
-					<key>1</key>
-					<dict>
-						<key>default value</key>
-						<integer>0</integer>
-						<key>name</key>
-						<string>selectionOption</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>1</string>
-					</dict>
-					<key>2</key>
-					<dict>
-						<key>default value</key>
-						<string>1</string>
-						<key>name</key>
-						<string>fromSlide</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>2</string>
-					</dict>
-				</dict>
-				<key>isViewVisible</key>
-				<true/>
-				<key>location</key>
-				<string>399.000000:1037.000000</string>
-				<key>nibPath</key>
-				<string>/Library/Automator/Select PowerPoint Slides.action/Contents/Resources/ja.lproj/main.nib</string>
-			</dict>
-			<key>isViewVisible</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>action</key>
-			<dict>
-				<key>AMAccepts</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Optional</key>
-					<false/>
-					<key>Types</key>
-					<array>
-						<string>com.microsoft.powerpoint.slide.object</string>
-					</array>
-				</dict>
-				<key>AMActionVersion</key>
-				<string>1.2</string>
-				<key>AMApplication</key>
-				<array>
-					<string>Microsoft PowerPoint</string>
-				</array>
-				<key>AMParameterProperties</key>
-				<dict>
-					<key>outputFolder</key>
-					<dict>
-						<key>isPathPopUp</key>
-						<true/>
-						<key>variableUUIDsInMenu</key>
-						<array/>
-					</dict>
-					<key>saveAs</key>
-					<dict/>
 					<key>saveFormat</key>
 					<dict/>
 				</dict>
@@ -469,24 +58,20 @@
 					</dict>
 				</array>
 				<key>ActionBundlePath</key>
-				<string>/Library/Automator/Get Images from PowerPoint Slides.action</string>
+				<string>/Library/Automator/Convert Format of PowerPoint Presentations.action</string>
 				<key>ActionName</key>
-				<string>PowerPoint スライドからイメージを取得</string>
+				<string>PowerPoint プレゼンテーションの形式を変換</string>
 				<key>ActionParameters</key>
 				<dict>
-					<key>outputFolder</key>
-					<string>~/Desktop</string>
-					<key>saveAs</key>
-					<string>image</string>
 					<key>saveFormat</key>
-					<integer>2</integer>
+					<integer>6</integer>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.microsoft.Automator.Get_Images_from_PowerPoint_Slides</string>
+				<string>com.microsoft.Automator.Convert_Format_of_PowerPoint_Presentations</string>
 				<key>CFBundleVersion</key>
 				<string>1.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
-				<true/>
+				<false/>
 				<key>CanShowWhenRun</key>
 				<true/>
 				<key>Category</key>
@@ -496,18 +81,16 @@
 				<key>Class Name</key>
 				<string>AMAppleScriptAction</string>
 				<key>InputUUID</key>
-				<string>B2F73558-9323-4BE2-9964-8D9D3D8EF3BB</string>
+				<string>6E0672E7-195A-43C2-A8C0-D14C74A94249</string>
 				<key>Keywords</key>
 				<array>
-					<string>変換</string>
-					<string>イメージ</string>
+					<string>保存</string>
+					<string>名前を付けて保存</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>28D1D975-1328-44F9-809F-5A0C740B647B</string>
-				<key>ShowWhenRun</key>
-				<false/>
+				<string>AFBB52B4-1A0A-4C9F-A347-D4B03B6D7B49</string>
 				<key>UUID</key>
-				<string>E93BA6A9-E416-4D73-A76D-9932105E2A59</string>
+				<string>CB032E1A-E217-40FE-84DB-22422109BC57</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Microsoft PowerPoint</string>
@@ -517,33 +100,7 @@
 					<key>0</key>
 					<dict>
 						<key>default value</key>
-						<string>~/Desktop</string>
-						<key>name</key>
-						<string>outputFolder</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>0</string>
-					</dict>
-					<key>1</key>
-					<dict>
-						<key>default value</key>
-						<string>名称未設定</string>
-						<key>name</key>
-						<string>saveAs</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>1</string>
-					</dict>
-					<key>2</key>
-					<dict>
-						<key>default value</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>name</key>
 						<string>saveFormat</string>
 						<key>required</key>
@@ -551,15 +108,15 @@
 						<key>type</key>
 						<string>0</string>
 						<key>uuid</key>
-						<string>2</string>
+						<string>0</string>
 					</dict>
 				</dict>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>399.000000:899.000000</string>
+				<string>447.000000:883.000000</string>
 				<key>nibPath</key>
-				<string>/Library/Automator/Get Images from PowerPoint Slides.action/Contents/Resources/ja.lproj/main.nib</string>
+				<string>/Library/Automator/Convert Format of PowerPoint Presentations.action/Contents/Resources/ja.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -591,7 +148,7 @@
 						<key>isPathPopUp</key>
 						<false/>
 						<key>selectedVariableUUID</key>
-						<string>B3D3DFD8-06D1-459D-84B8-98CA9A3DC3EA</string>
+						<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
 						<key>variableUUIDsInMenu</key>
 						<array/>
 					</dict>
@@ -614,7 +171,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>variableUUID</key>
-					<string>B3D3DFD8-06D1-459D-84B8-98CA9A3DC3EA</string>
+					<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.Set_Value_of_Variable</string>
@@ -631,7 +188,7 @@
 				<key>Class Name</key>
 				<string>Set_Value_of_Variable</string>
 				<key>InputUUID</key>
-				<string>E7A9A06E-97FC-4CE2-9357-ADDBD0637A64</string>
+				<string>DA2B3DB2-ED06-44FB-933C-3E8A09EC7660</string>
 				<key>Keywords</key>
 				<array>
 					<string>変数</string>
@@ -641,9 +198,9 @@
 					<string>記憶装置</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>4ECABF5E-F965-482D-971C-282687F8B350</string>
+				<string>5A77C99F-2231-488A-9EDA-1F6D6954E40A</string>
 				<key>UUID</key>
-				<string>EA7024F9-686F-4BD9-BC13-C18197696E4C</string>
+				<string>AD97D080-5EEA-4954-A1CA-A1697AA6EEA3</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -667,7 +224,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>399.000000:739.000000</string>
+				<string>447.000000:773.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -750,7 +307,7 @@
 				<key>IgnoresInput</key>
 				<true/>
 				<key>InputUUID</key>
-				<string>44BE96A7-F118-41DA-B922-153088A78E90</string>
+				<string>F4E72071-8C2D-4B52-A207-5379FFC6BCF3</string>
 				<key>Keywords</key>
 				<array>
 					<string>シェル</string>
@@ -760,9 +317,9 @@
 					<string>UNIX</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>EE683B4C-2EB0-4A16-94C3-2D28B9A23F23</string>
+				<string>6F0A0253-1BA4-4C01-A7D4-5025C3585147</string>
 				<key>UUID</key>
-				<string>30A3B526-7A14-4191-8294-064F8E5CCBF7</string>
+				<string>12C5BB65-1591-4E02-94A1-E29C81420CA7</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -836,11 +393,121 @@
 					</dict>
 				</dict>
 				<key>isViewVisible</key>
-				<true/>
+				<false/>
 				<key>location</key>
-				<string>399.000000:634.000000</string>
+				<string>447.000000:668.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Japanese.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>variableUUID</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<false/>
+						<key>selectedVariableUUID</key>
+						<string>DBD9FB63-C0FD-4195-AABA-9B1B2B04D0AA</string>
+						<key>variableUUIDsInMenu</key>
+						<array/>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action</string>
+				<key>ActionName</key>
+				<string>変数の値を設定</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>variableUUID</key>
+					<string>DBD9FB63-C0FD-4195-AABA-9B1B2B04D0AA</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.Set_Value_of_Variable</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>Set_Value_of_Variable</string>
+				<key>InputUUID</key>
+				<string>7F6768B9-45A6-4F77-8518-51E73EA0BA54</string>
+				<key>Keywords</key>
+				<array>
+					<string>変数</string>
+					<string>バインド</string>
+					<string>入力</string>
+					<string>出力</string>
+					<string>記憶装置</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>D1544F93-906B-4A44-B32A-6051A2E1831E</string>
+				<key>UUID</key>
+				<string>B909CC41-54E5-47D9-80DE-34B93D244349</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>variableUUID</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>447.000000:626.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -860,7 +527,7 @@
 					</array>
 				</dict>
 				<key>AMActionVersion</key>
-				<string>1.2.2</string>
+				<string>v.1.2.2</string>
 				<key>AMApplication</key>
 				<array>
 					<string>Finder</string>
@@ -871,15 +538,19 @@
 					<dict>
 						<key>tokenizedValue</key>
 						<array>
-							<string>images</string>
+							<string>tmp_pdf</string>
 						</array>
 					</dict>
 					<key>targetLocation</key>
 					<dict>
 						<key>isPathPopUp</key>
 						<true/>
+						<key>selectedVariableUUID</key>
+						<string>DBD9FB63-C0FD-4195-AABA-9B1B2B04D0AA</string>
 						<key>variableUUIDsInMenu</key>
-						<array/>
+						<array>
+							<string>DBD9FB63-C0FD-4195-AABA-9B1B2B04D0AA</string>
+						</array>
 					</dict>
 				</dict>
 				<key>AMProvides</key>
@@ -898,9 +569,9 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>newName</key>
-					<string>images</string>
+					<string>tmp_pdf</string>
 					<key>targetLocation</key>
-					<string>~/Desktop</string>
+					<string>DBD9FB63-C0FD-4195-AABA-9B1B2B04D0AA</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.MakeNewFolder</string>
@@ -917,9 +588,9 @@
 				<key>Class Name</key>
 				<string>NewFolderAction</string>
 				<key>IgnoresInput</key>
-				<false/>
+				<true/>
 				<key>InputUUID</key>
-				<string>73F02ECB-8A64-496B-A3D6-69895CE6C32C</string>
+				<string>42E1E310-13E2-4F2C-8397-469B5ED26D08</string>
 				<key>Keywords</key>
 				<array>
 					<string>フォルダ</string>
@@ -928,9 +599,9 @@
 					<string>新規</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>722B7463-C6D3-4997-A9B3-1A8166816ED6</string>
+				<string>139169A4-5B69-4187-A769-5EC41D248C04</string>
 				<key>UUID</key>
-				<string>159B6CFB-AD1E-485C-9F6C-FB0668DDA7CE</string>
+				<string>A85B77D1-B2FE-4D0A-A57E-31577712C443</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Finder</string>
@@ -967,7 +638,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>399.000000:451.000000</string>
+				<string>447.000000:521.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/New Folder.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -1001,9 +672,7 @@
 						<key>isPathPopUp</key>
 						<false/>
 						<key>selectedVariableUUID</key>
-						<string>580A8F9C-D1BA-4DB5-947D-6EE329E9DD69</string>
-						<key>variableUUIDsInMenu</key>
-						<array/>
+						<string>A4C22E9C-4FFF-4A8F-AF3A-9DB3C4734CC6</string>
 					</dict>
 				</dict>
 				<key>AMProvides</key>
@@ -1024,7 +693,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>variableUUID</key>
-					<string>580A8F9C-D1BA-4DB5-947D-6EE329E9DD69</string>
+					<string>A4C22E9C-4FFF-4A8F-AF3A-9DB3C4734CC6</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.Set_Value_of_Variable</string>
@@ -1041,7 +710,7 @@
 				<key>Class Name</key>
 				<string>Set_Value_of_Variable</string>
 				<key>InputUUID</key>
-				<string>64F42C90-960D-4D7F-9689-1BF7FC619FFB</string>
+				<string>EFB3B9A2-F073-47E6-96EB-E9A5F6226C7D</string>
 				<key>Keywords</key>
 				<array>
 					<string>変数</string>
@@ -1051,9 +720,9 @@
 					<string>記憶装置</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>8BCA63E3-1BEF-4D85-BCDD-3591BDF5558F</string>
+				<string>89B4C975-94EB-4FC2-8485-743B7102BD2E</string>
 				<key>UUID</key>
-				<string>DC11B0F2-BC90-4ED4-8254-414B8881F3ED</string>
+				<string>A3DCB307-CFF4-4C57-B175-2C2F71B69AA7</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -1074,10 +743,12 @@
 						<string>0</string>
 					</dict>
 				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>399.000000:321.000000</string>
+				<string>447.000000:337.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -1111,7 +782,7 @@
 						<key>isPathPopUp</key>
 						<false/>
 						<key>selectedVariableUUID</key>
-						<string>B3D3DFD8-06D1-459D-84B8-98CA9A3DC3EA</string>
+						<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
 						<key>variableUUIDsInMenu</key>
 						<array/>
 					</dict>
@@ -1134,7 +805,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>variableUUID</key>
-					<string>B3D3DFD8-06D1-459D-84B8-98CA9A3DC3EA</string>
+					<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.Get_Value_of_Variable</string>
@@ -1153,7 +824,7 @@
 				<key>IgnoresInput</key>
 				<true/>
 				<key>InputUUID</key>
-				<string>414F69B4-2660-4F36-8852-898C382A21D4</string>
+				<string>01A487DA-EC21-4043-B9E9-CF7C475521E8</string>
 				<key>Keywords</key>
 				<array>
 					<string>変数</string>
@@ -1163,9 +834,11 @@
 					<string>記憶装置</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>B52B53C2-09AA-41CB-8CE0-919E2CE6AF60</string>
+				<string>93F4E236-8EBE-4CE9-BE03-4C9F022F0EC3</string>
+				<key>StartAction</key>
+				<false/>
 				<key>UUID</key>
-				<string>A5000ECC-8014-4425-A551-45B246FBAC34</string>
+				<string>52F394A2-F09C-44A0-99D7-1DDC8DBB115B</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -1189,7 +862,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>399.000000:216.000000</string>
+				<string>447.000000:232.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -1225,10 +898,10 @@
 						<key>isPathPopUp</key>
 						<true/>
 						<key>selectedVariableUUID</key>
-						<string>580A8F9C-D1BA-4DB5-947D-6EE329E9DD69</string>
+						<string>A4C22E9C-4FFF-4A8F-AF3A-9DB3C4734CC6</string>
 						<key>variableUUIDsInMenu</key>
 						<array>
-							<string>580A8F9C-D1BA-4DB5-947D-6EE329E9DD69</string>
+							<string>A4C22E9C-4FFF-4A8F-AF3A-9DB3C4734CC6</string>
 						</array>
 					</dict>
 				</dict>
@@ -1250,7 +923,7 @@
 					<key>replaceExisting</key>
 					<true/>
 					<key>toDirectory</key>
-					<string>580A8F9C-D1BA-4DB5-947D-6EE329E9DD69</string>
+					<string></string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.MoveFiles</string>
@@ -1267,16 +940,16 @@
 				<key>Class Name</key>
 				<string>MoveFilesAction</string>
 				<key>InputUUID</key>
-				<string>D78EB626-3CC7-4CD9-9452-B02DDC9BC277</string>
+				<string>F6D4BD4E-56BE-4CE9-B119-2E1082EA44D1</string>
 				<key>Keywords</key>
 				<array>
 					<string>ファイル</string>
 					<string>移動</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>A49C6E35-4252-434A-ADDF-CBF1A44DE1F5</string>
+				<string>777A4356-E19A-4AF2-B76F-AA326F7895AA</string>
 				<key>UUID</key>
-				<string>0B1BCA92-749F-4E90-B0C3-A52450CD88EC</string>
+				<string>91D3884F-C2A9-4E80-949B-9E14FF18BDFE</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Finder</string>
@@ -1310,10 +983,12 @@
 						<string>1</string>
 					</dict>
 				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>399.000000:113.000000</string>
+				<string>447.000000:129.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Move Finder Items.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -1323,97 +998,85 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>05D31B0C-D9B7-4371-9B03-E33B434E5318</key>
+		<key>16F9F85F-3B5E-433D-8EB1-3E4854A70CD0</key>
 		<dict>
 			<key>from</key>
-			<string>30A3B526-7A14-4191-8294-064F8E5CCBF7 - 30A3B526-7A14-4191-8294-064F8E5CCBF7</string>
+			<string>A3DCB307-CFF4-4C57-B175-2C2F71B69AA7 - A3DCB307-CFF4-4C57-B175-2C2F71B69AA7</string>
 			<key>to</key>
-			<string>159B6CFB-AD1E-485C-9F6C-FB0668DDA7CE - 159B6CFB-AD1E-485C-9F6C-FB0668DDA7CE</string>
+			<string>52F394A2-F09C-44A0-99D7-1DDC8DBB115B - 52F394A2-F09C-44A0-99D7-1DDC8DBB115B</string>
 		</dict>
-		<key>5CBED51C-1DE6-4277-AF28-4A0F37779E84</key>
+		<key>4BE7D411-CE2F-4BEE-B7CD-24E6F3B06D46</key>
 		<dict>
 			<key>from</key>
-			<string>DC11B0F2-BC90-4ED4-8254-414B8881F3ED - DC11B0F2-BC90-4ED4-8254-414B8881F3ED</string>
+			<string>B909CC41-54E5-47D9-80DE-34B93D244349 - B909CC41-54E5-47D9-80DE-34B93D244349</string>
 			<key>to</key>
-			<string>A5000ECC-8014-4425-A551-45B246FBAC34 - A5000ECC-8014-4425-A551-45B246FBAC34</string>
+			<string>A85B77D1-B2FE-4D0A-A57E-31577712C443 - A85B77D1-B2FE-4D0A-A57E-31577712C443</string>
 		</dict>
-		<key>6690DEE6-D734-48F1-98E1-2BEE8630959C</key>
+		<key>504D43F8-ACF1-443A-A67D-4F0A70E34985</key>
 		<dict>
 			<key>from</key>
-			<string>A5000ECC-8014-4425-A551-45B246FBAC34 - A5000ECC-8014-4425-A551-45B246FBAC34</string>
+			<string>12C5BB65-1591-4E02-94A1-E29C81420CA7 - 12C5BB65-1591-4E02-94A1-E29C81420CA7</string>
 			<key>to</key>
-			<string>0B1BCA92-749F-4E90-B0C3-A52450CD88EC - 0B1BCA92-749F-4E90-B0C3-A52450CD88EC</string>
+			<string>B909CC41-54E5-47D9-80DE-34B93D244349 - B909CC41-54E5-47D9-80DE-34B93D244349</string>
 		</dict>
-		<key>9B754FCC-C24E-4546-91B0-16A3940E2228</key>
+		<key>604023FC-4C76-4E8E-AC07-660D8E2D4087</key>
 		<dict>
 			<key>from</key>
-			<string>E93BA6A9-E416-4D73-A76D-9932105E2A59 - E93BA6A9-E416-4D73-A76D-9932105E2A59</string>
+			<string>52F394A2-F09C-44A0-99D7-1DDC8DBB115B - 52F394A2-F09C-44A0-99D7-1DDC8DBB115B</string>
 			<key>to</key>
-			<string>EA7024F9-686F-4BD9-BC13-C18197696E4C - EA7024F9-686F-4BD9-BC13-C18197696E4C</string>
+			<string>91D3884F-C2A9-4E80-949B-9E14FF18BDFE - 91D3884F-C2A9-4E80-949B-9E14FF18BDFE</string>
 		</dict>
-		<key>C0695194-E543-483A-8F9D-C435DC5ADCA8</key>
+		<key>8DA9C1BD-8B3B-4192-B111-159FBEBB17C1</key>
 		<dict>
 			<key>from</key>
-			<string>EA7024F9-686F-4BD9-BC13-C18197696E4C - EA7024F9-686F-4BD9-BC13-C18197696E4C</string>
+			<string>AD97D080-5EEA-4954-A1CA-A1697AA6EEA3 - AD97D080-5EEA-4954-A1CA-A1697AA6EEA3</string>
 			<key>to</key>
-			<string>30A3B526-7A14-4191-8294-064F8E5CCBF7 - 30A3B526-7A14-4191-8294-064F8E5CCBF7</string>
+			<string>12C5BB65-1591-4E02-94A1-E29C81420CA7 - 12C5BB65-1591-4E02-94A1-E29C81420CA7</string>
 		</dict>
-		<key>C219D5B3-69DA-40B4-932C-B0D58CE898C2</key>
+		<key>C5CEE14D-2235-4A08-8F0F-33546FF32B01</key>
 		<dict>
 			<key>from</key>
-			<string>7441A448-DEBA-45C7-9705-5A00944603B9 - 7441A448-DEBA-45C7-9705-5A00944603B9</string>
+			<string>CB032E1A-E217-40FE-84DB-22422109BC57 - CB032E1A-E217-40FE-84DB-22422109BC57</string>
 			<key>to</key>
-			<string>E93BA6A9-E416-4D73-A76D-9932105E2A59 - E93BA6A9-E416-4D73-A76D-9932105E2A59</string>
+			<string>AD97D080-5EEA-4954-A1CA-A1697AA6EEA3 - AD97D080-5EEA-4954-A1CA-A1697AA6EEA3</string>
 		</dict>
-		<key>C8B4A052-F313-434E-8850-2DA86DAC3455</key>
+		<key>FF9245F3-AB7F-4E0A-8FDC-235D060CCC4F</key>
 		<dict>
 			<key>from</key>
-			<string>7D0AA722-D068-401B-95CA-59E6A5839B20 - 7D0AA722-D068-401B-95CA-59E6A5839B20</string>
+			<string>A85B77D1-B2FE-4D0A-A57E-31577712C443 - A85B77D1-B2FE-4D0A-A57E-31577712C443</string>
 			<key>to</key>
-			<string>7441A448-DEBA-45C7-9705-5A00944603B9 - 7441A448-DEBA-45C7-9705-5A00944603B9</string>
-		</dict>
-		<key>DA2D10AF-0857-4424-9D0E-965C12158004</key>
-		<dict>
-			<key>from</key>
-			<string>159B6CFB-AD1E-485C-9F6C-FB0668DDA7CE - 159B6CFB-AD1E-485C-9F6C-FB0668DDA7CE</string>
-			<key>to</key>
-			<string>DC11B0F2-BC90-4ED4-8254-414B8881F3ED - DC11B0F2-BC90-4ED4-8254-414B8881F3ED</string>
-		</dict>
-		<key>E7240E38-B10E-4A47-B197-D2C516CBBA9D</key>
-		<dict>
-			<key>from</key>
-			<string>F147E896-11A3-48BA-9A65-152FFCC83088 - F147E896-11A3-48BA-9A65-152FFCC83088</string>
-			<key>to</key>
-			<string>7D0AA722-D068-401B-95CA-59E6A5839B20 - 7D0AA722-D068-401B-95CA-59E6A5839B20</string>
+			<string>A3DCB307-CFF4-4C57-B175-2C2F71B69AA7 - A3DCB307-CFF4-4C57-B175-2C2F71B69AA7</string>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<array>
 		<dict>
 			<key>UUID</key>
-			<string>B3D3DFD8-06D1-459D-84B8-98CA9A3DC3EA</string>
-			<key>identifier</key>
-			<string>com.apple.Automator.Variable.Storage</string>
-			<key>name</key>
-			<string>images</string>
-		</dict>
-		<dict>
-			<key>UUID</key>
-			<string>580A8F9C-D1BA-4DB5-947D-6EE329E9DD69</string>
+			<string>DBD9FB63-C0FD-4195-AABA-9B1B2B04D0AA</string>
 			<key>identifier</key>
 			<string>com.apple.Automator.Variable.Path</string>
 			<key>name</key>
-			<string>images_path</string>
+			<string>sd_path</string>
 			<key>value</key>
-			<string>/Users/Hiroyuki/Library/Preferences/Ikkitsukan/images</string>
+			<string>~/Desktop</string>
 		</dict>
 		<dict>
 			<key>UUID</key>
-			<string>D329469D-0175-44B3-B09D-B32666668E00</string>
+			<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
 			<key>identifier</key>
 			<string>com.apple.Automator.Variable.Storage</string>
 			<key>name</key>
-			<string>sd_path</string>
+			<string>pptx</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>A4C22E9C-4FFF-4A8F-AF3A-9DB3C4734CC6</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Path</string>
+			<key>name</key>
+			<string>tmpDir</string>
+			<key>value</key>
+			<string>~/Desktop</string>
 		</dict>
 	</array>
 	<key>workflowMetaData</key>

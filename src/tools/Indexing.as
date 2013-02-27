@@ -38,9 +38,7 @@ package tools
 		
 		// getter and setter
 		public function get allPPTXPaths():Array { return _allPPTXPaths; }
-		//public function set allPPTXPaths(value:Array):void { _allPPTXPaths = value; }
 		public function get pptx_infos():Vector.<PPTXInfo> { return _pptx_infos; }
-		//public function set pptx_infos(value:Vector.<PPTXInfo>):void { _pptx_infos = value; }
 
 		public function run():void {
 			
@@ -74,6 +72,7 @@ package tools
 					flag_loadExistingPPTXInfo = true; run(); break;
 				case "RenovatedPPTXInfo":
 					flag_renovatePPTXInfo = true; run(); break;
+				case "CreatedPDFandImages":
 					break;
 			}
 		}
@@ -81,15 +80,17 @@ package tools
 		// Check the state in StorageDirectory
 		public function initialize():void {
 						
+			// Create .sd_path file which has the path of presDir in user directory
+			var sd_path:File = File.userDirectory.resolvePath(".sd_path");
+			if(!sd_path.exists) {
+				writeText(sd_path,presDir.nativePath);
+			}
+			
 			// Check "presentations" directory exists in sdDirectory
 			presDir = File.applicationStorageDirectory.resolvePath("presentations");
 			if(!presDir.exists) {
 				presDir.createDirectory();
 			}
-			
-			// Create .sd_path file which has the path of presDir in user directory
-			var sd_path:File = File.userDirectory.resolvePath(".sd_path");
-			writeText(sd_path,presDir.nativePath);
 			
 			// Check "pptx_info" file exists in presDirectory
 			var pptx_info_txt:File = presDir.resolvePath("pptx_info.txt");
@@ -135,7 +136,7 @@ package tools
 				for each( pptx_path in _allPPTXPaths) {
 					trace("Adding... " + pptx_path);
 					_pptx_infos.push(getPPTXInfo(pptx_path));
-					automator.createPDFandImages(pptx_path);
+					automator.createPDFandImages(pptx_info);
 				}
 			}
 			
@@ -167,14 +168,14 @@ package tools
 						// because the previous file had the same filepath was edited or deleted.
 						_pptx_infos.splice(indexOfSameFilepath,indexOfSameFilepath);
 						_pptx_infos.push(pptx_info);
-						automator.createPDFandImages(pptx_path);
+						automator.createPDFandImages(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
 					else {
 						// old pptx_info file doesn't have this pptx_info.
 						// need to add all pptx_info and create the pdf and images.
 						_pptx_infos.push(pptx_info);
-						automator.createPDFandImages(pptx_path);
+						automator.createPDFandImages(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
 				}
@@ -224,7 +225,6 @@ package tools
 		private function writePPTXInfos(pptx_infos:Vector.<PPTXInfo>):void {
 			var str:String = "";
 			for each(var pptx_info:PPTXInfo in _pptx_infos) {
-				trace("Recording... " + pptx_info.filepath);
 				str += pptx_info.md5 + "," + pptx_info.filepath + "," + pptx_info.filename + "," + pptx_info.date.toString() + "\n";
 			}
 			writeText(presDir.resolvePath(PPTX_INFO_FILE),str.substr(0,str.length-2)); // delete the last of "\n"
