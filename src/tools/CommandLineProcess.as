@@ -74,7 +74,6 @@ package tools
 			
 			// 実行
 			process.start(nativeProcessStartupInfo);
-		    
 		}
 		
 		// Dispatch Events to the NativeApplication 

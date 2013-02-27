@@ -20,6 +20,7 @@ package tools
 		// private variables
 		private var presDir:File;
 		private var automator:Automator;
+		private var tmp_pptx_info:Vector.<PPTXInfo>;
 		
 		// flags for first indexing
 	    private var flag_initialize:Boolean = false;
@@ -34,6 +35,7 @@ package tools
 		public function Indexing()
 		{
 			automator = new Automator();
+			tmp_pptx_info = new Vector.<PPTXInfo>;
 		}
 		
 		// getter and setter
@@ -136,7 +138,8 @@ package tools
 				for each( pptx_path in _allPPTXPaths) {
 					trace("Adding... " + pptx_path);
 					_pptx_infos.push(getPPTXInfo(pptx_path));
-					automator.createPDFandImages(pptx_info);
+					//automator.createPDFandImages(pptx_info);
+					this.tmp_pptx_info.push(pptx_info);
 				}
 			}
 			
@@ -168,18 +171,24 @@ package tools
 						// because the previous file had the same filepath was edited or deleted.
 						_pptx_infos.splice(indexOfSameFilepath,indexOfSameFilepath);
 						_pptx_infos.push(pptx_info);
-						automator.createPDFandImages(pptx_info);
+						//automator.createPDFandImages(pptx_info);
+						this.tmp_pptx_info.push(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
 					else {
 						// old pptx_info file doesn't have this pptx_info.
 						// need to add all pptx_info and create the pdf and images.
 						_pptx_infos.push(pptx_info);
-						automator.createPDFandImages(pptx_info);
+						//automator.createPDFandImages(pptx_info);
+						this.tmp_pptx_info.push(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
 				}
 			}
+			
+			automator.createPDFandImages(tmp_pptx_info.pop());
+			
+			
 			// Write pptx_infos into the pptx_info file
 			writePPTXInfos(_pptx_infos);
 			trace("Writing... " + PPTX_INFO_FILE);
