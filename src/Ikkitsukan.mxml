@@ -2,18 +2,29 @@
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
-					   width="800" height="800" title="一気通貫"
+					   width="700" height="700"  title="一気通貫"
 					   windowComplete="windowedapplication1_windowCompleteHandler(event)">
 
 	<fx:Declarations>
 		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
 	</fx:Declarations>
 	<fx:Script source="ikkitsukan.as" />
-	<mx:HTML id="myHTML" x="101" y="212" width="200" height="200"/>
-	<mx:HTML id="myHTML2" x="300" y="212" width="200" height="200"/>
-	<mx:HTML id="myHTML0" x="499" y="212" width="200" height="200"/>
-	<mx:HTML id="myHTML1" x="102" y="412" width="200" height="200"/>
-	<mx:HTML id="myHTML3" x="301" y="412" width="200" height="200"/>
-	<mx:HTML id="myHTML4" x="500" y="412" width="200" height="200"/>
+	<s:BorderContainer width="600" height="546" cornerRadius="10" horizontalCenter="0"
+					   verticalCenter="30">
+		<s:layout>
+			<s:TileLayout horizontalAlign="center" horizontalGap="25" orientation="rows"
+						  verticalAlign="middle" verticalGap="20"/>
+		</s:layout>
+		<s:BorderContainer x="-195" y="308" width="150" height="150" cornerRadius="5"
+						   dropShadowVisible="true">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<mx:HTML id="myHTML" width="140" height="140" dropShadowVisible="true"
+					 horizontalCenter="0" verticalCenter="0"/>
+		</s:BorderContainer>
+	</s:BorderContainer>
+
+	
 
 </s:WindowedApplication>

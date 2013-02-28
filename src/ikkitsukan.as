@@ -11,13 +11,20 @@ import mx.events.AIREvent;
 
 import tools.CommandLineProcess;
 import tools.Indexing;
+import tools.Test;
 
 private var process:CommandLineProcess;
 
 protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
 {
-	var indexing:Indexing = new Indexing();
-	indexing.run();
+	//var indexing:Indexing = new Indexing();
+	//indexing.run();
+	
+	var selectTest:Test = new Test();
+	var slideNums:Vector.<Number> = new Vector.<Number>;
+	slideNums.push(2);slideNums.push(3);slideNums.push(4);
+	selectTest.slideNums = slideNums;
+	selectTest.extractSlides(new NativeProcessExitEvent(NativeProcessExitEvent.EXIT));
 }
 
 private function loadPDF():void {
@@ -29,16 +36,14 @@ private function loadPDF():void {
 			trace(File.applicationStorageDirectory.resolvePath("presentations/presentation.pdf").url);
 			var request:URLRequest = new URLRequest(File.applicationStorageDirectory.resolvePath("presentations/presentation.pdf").url); 
 	        var pdf:HTMLLoader = new HTMLLoader(); 
-	        pdf.height = 300; 
-	        pdf.width = 300; 
+	        pdf.height = myHTML.height - 10; 
+	        pdf.width = myHTML.width - 10; 
 	        pdf.load(request); 
 	        myHTML.location = pdf.location;
-			myHTML0.location = pdf.location; 
-			myHTML1.location = pdf.location; 
-			myHTML2.location = pdf.location; 
-			myHTML3.location = pdf.location; 
-			myHTML4.location = pdf.location; 
-		
+//			myHTML1.location = pdf.location;
+//			myHTML2.location = pdf.location;
+//			myHTML3.location = pdf.location;
+//			myHTML4.location = pdf.location;
 	    } 
 	    else { 
 		        trace("Unable to open PDF docs!"); 
