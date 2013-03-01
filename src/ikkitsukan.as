@@ -17,14 +17,14 @@ private var process:CommandLineProcess;
 
 protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
 {
-	//var indexing:Indexing = new Indexing();
-	//indexing.run();
+	var indexing:Indexing = new Indexing();
+	indexing.run();
 	
-	var selectTest:Test = new Test();
-	var slideNums:Vector.<Number> = new Vector.<Number>;
-	slideNums.push(2);slideNums.push(3);slideNums.push(4);
-	selectTest.slideNums = slideNums;
-	selectTest.extractSlides(new NativeProcessExitEvent(NativeProcessExitEvent.EXIT));
+//	var selectTest:Test = new Test();
+//	var slideNums:Vector.<Number> = new Vector.<Number>;
+//	slideNums.push(2);slideNums.push(3);slideNums.push(4);
+//	selectTest.slideNums = slideNums;
+//	selectTest.extractSlides(new NativeProcessExitEvent(NativeProcessExitEvent.EXIT));
 }
 
 private function loadPDF():void {

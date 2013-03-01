@@ -168,7 +168,7 @@ package tools
 						}
 					}
 					else if( indexOfSameFilepath >= 0 ) {
-						// old pptx_info file already has has the same filepath.
+						// old pptx_info file already has the same filepath.
 						// need to delete pptx_infos[i] and create anew one
 						// because the previous file had the same filepath was edited or deleted.
 						_pptx_infos.splice(indexOfSameFilepath,indexOfSameFilepath);
@@ -189,7 +189,8 @@ package tools
 			}
 			
 			// 2013-02-28
-			automator.createPDFandImages(tmp_pptx_info.pop());
+			//automator.createPDFandImages(tmp_pptx_info.pop());	// For Debug 2013-03-01
+			this.tmp_pptx_info.length = 0; 							// For Debug 2013-03-01
 			this.flag_renovatePPTXInfo = true;
 			
 			// Write pptx_infos into the pptx_info file
@@ -202,7 +203,7 @@ package tools
 			var crypto:Crypto = new Crypto();
 			var pptx:File = new File(pptx_path);
 			var pptx_info:PPTXInfo = new PPTXInfo();
-			pptx_info.filename = pptx.name;
+			pptx_info.filename = pptx.name.substr(0,pptx.name.lastIndexOf("."));
 			pptx_info.filepath = pptx.nativePath;
 			pptx_info.md5 = crypto.cryptoMD5(pptx);
 			pptx_info.date = new Date();

@@ -36,15 +36,8 @@ package tools
 		}
 		
 		public function createPDFandImages(pptx_info:PPTXInfo):void {
-			//var process:CommandLineProcess = new CommandLineProcess();
 			var args:Vector.<String> = new Vector.<String>;
 			args.push("-i");
-//			args.push("/Users/Desktop//Users/Hiroyuki/Desktop/プレゼンテーション2.pptx");
-//			args.push(installDirPath + "/CreatePDFandImages.workflow");
-//			args.push("/usr/bin/automator");
-//			args.push("-i");
-//			args.push("/Users/Desktop//Users/Hiroyuki/Desktop/presentation.pptx");
-//			args.push(installDirPath + "/CreatePDFandImages.workflow");
 			args.push(pptx_info.filepath);
 			args.push(installDirPath + "/CreatePDFandImages.workflow");
 			process.appName = "automator";
@@ -56,8 +49,8 @@ package tools
 		}
 		
 		public function moveIn2Directory(orgpath:String, destpath:String):void {
-			orgpath = orgpath.substr(0, orgpath.length - 4) + "pdf";
-			destpath = destpath.substr(0, destpath.length - 4) + "pdf";
+			orgpath = ".pdf"; // Add "pdf" extension on the filepaths
+			destpath = ".pdf";
 			trace(orgpath);
 			trace(destpath);
 			var original:File = new File(orgpath);
@@ -67,15 +60,6 @@ package tools
 			original.addEventListener(Event.COMPLETE, fileMoveCompleteHandler); 
 			original.addEventListener(IOErrorEvent.IO_ERROR, fileMoveIOErrorEventHandler); 
 			original.moveTo(destination,true);
-//			var args:Vector.<String> = new Vector.<String>;
-//			args.push(filepath);
-//			args.push(dirpath);
-//			process.appName = "mv";
-//			process.arguments = args;
-//			trace("filepath: " + filepath);
-//			trace("mv " + process.arguments[0]);
-//			process.addEventListener(NativeProcessExitEvent.EXIT, finMoveIn2Directory);
-//			process.run();
 		}
 		
 		
@@ -127,9 +111,7 @@ package tools
 			
 			// Move the pdf file into the created pdf directory
 			trace("MD5 direcotry is " + indivisualDir.exists);
-			//trace(pdfDir.nativePath);
 			moveIn2Directory(presDir.resolvePath("tmp_pdf").nativePath +"/" + pptx_info.filename, pdfDir.nativePath + "/" + pptx_info.filename);
-			//moveIn2Directory(presDir.resolvePath("tmp_pdf").nativePath +"/" + pptx_info.filename, pdfDir.nativePath);
 		}
 		
 		
