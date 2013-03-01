@@ -9,22 +9,29 @@ import flash.net.URLRequest;
 import mx.controls.Alert;
 import mx.events.AIREvent;
 
+import tools.Automator;
 import tools.CommandLineProcess;
 import tools.Indexing;
-import tools.Test;
+import tools.PPTXInfo;
 
 private var process:CommandLineProcess;
 
 protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
 {
-	var indexing:Indexing = new Indexing();
-	indexing.run();
+	var pptx_info:PPTXInfo = new PPTXInfo();
+	pptx_info.md5 = "AAAA";
+	pptx_info.filepath = "/Users/Hiroyuki/Desktop/プレゼンテーション2.pptx";
+	pptx_info.filename = "プレゼンテーション2";
+	pptx_info.date = new Date();
+	var slidenums:Vector.<Number> = new Vector.<Number>;
+	slidenums.push(1);
+	slidenums.push(3);
+	slidenums.reverse();
+	new Automator().selectSlides(pptx_info, slidenums);
 	
-//	var selectTest:Test = new Test();
-//	var slideNums:Vector.<Number> = new Vector.<Number>;
-//	slideNums.push(2);slideNums.push(3);slideNums.push(4);
-//	selectTest.slideNums = slideNums;
-//	selectTest.extractSlides(new NativeProcessExitEvent(NativeProcessExitEvent.EXIT));
+	
+//	var indexing:Indexing = new Indexing();
+//	indexing.run();
 }
 
 private function loadPDF():void {

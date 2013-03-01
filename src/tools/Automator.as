@@ -2,11 +2,12 @@ package tools
 {
 	import events.NotificationEvent;
 	
-	import flash.events.EventDispatcher;
-	import flash.events.NativeProcessExitEvent;
 	import flash.events.Event;
+	import flash.events.EventDispatcher;
 	import flash.events.IOErrorEvent;
+	import flash.events.NativeProcessExitEvent;
 	import flash.filesystem.File;
+	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
 
 	public class Automator extends EventDispatcher
@@ -14,8 +15,9 @@ package tools
 		private var process:CommandLineProcess;
 		private var stream:FileStream;
 		
-		private var tmp_pptx_info:PPTXInfo; // need to delete this variable 
-		private var installDirPath:String = File.applicationDirectory.resolvePath("automators").nativePath;
+		private var tmp_pinfo:PPTXInfo;
+		private var tmp_slidenums:Vector.<Number>;
+		private var automatorDirPath:String = File.applicationDirectory.resolvePath("automators").nativePath;
 		
 		public function Automator()
 		{
@@ -23,78 +25,94 @@ package tools
 			stream = new FileStream();
 		}
 		
-		// search PPTX file with Spotlight
-		// the result is written into pptx_paths file in the storage directory
-		// return pptx_paths in List<String>
+		
+		////////////////////////////////////////////////////////////////////////////
+		// Public Functions
+		////////////////////////////////////////////////////////////////////////////
+		
+		// Search pptxes with Spotlight
+		// The result is written into pptx_paths file in the storage directory
 		public function searchPPTX():void {
 			var args:Vector.<String> = new Vector.<String>;
-			args.push(installDirPath + "/FindPPTXwithSpotlight.workflow");
+			args.push(automatorDirPath + "/FindPPTXwithSpotlight.workflow");
 			process.appName = "automator";
 			process.arguments = args;
 			process.addEventListener(NativeProcessExitEvent.EXIT, finSearchPPTX);
 			process.run();
 		}
 		
+		// Create a pdf and Images from a pptx
 		public function createPDFandImages(pptx_info:PPTXInfo):void {
 			var args:Vector.<String> = new Vector.<String>;
 			args.push("-i");
 			args.push(pptx_info.filepath);
-			args.push(installDirPath + "/CreatePDFandImages.workflow");
+			args.push(automatorDirPath + "/CreatePDFandImages.workflow");
 			process.appName = "automator";
 			process.arguments = args;
 			process.addEventListener(NativeProcessExitEvent.EXIT, finCreatePDFandImages);
-			//process.addEventListener("notificationEvent", divideUpPDFandImages);
-			this.tmp_pptx_info = pptx_info;
+			process.run();
+			this.tmp_pinfo = pptx_info;
+		}
+		
+		// Draw a specified number of slide from pptx
+		public function selectSlides(pptx_info:PPTXInfo, slidenums:Vector.<Number>):void {
+			var workflow:File = new File(automatorDirPath + "/SelectSlides.workflow/Contents/document.wflow");
+			
+			// Load the source code of the workflow
+			var array:Array = readLines(workflow);
+			
+			// The line number will be revise to the specified number of the slide in pptx
+			var slidenum:Number = slidenums.pop();
+			array[274] = "					<real>"+slidenum+"</real>";
+			array[278] = "					<real>"+slidenum+"</real>";
+			
+			// Write the revised source code to original workflow file
+			var str:String = "";
+			for each(var line:String in array) {
+				str += line + "\n";
+			}
+			writeText(workflow, str);
+			
+			// Execute Automator
+			var args:Vector.<String> = new Vector.<String>;
+			args.push("-i");
+			args.push(pptx_info.filepath);
+			args.push(automatorDirPath + "/SelectSlides.workflow");
+			process.appName = "automator";
+			process.arguments = args;
+			process.addEventListener(NativeProcessExitEvent.EXIT, extractSlides);
+			process.run();
+			this.tmp_pinfo = pptx_info;
+			this.tmp_slidenums = slidenums;
+		}
+
+		// Draw several slides from pptx
+		public function extractSlides(event:NativeProcessExitEvent):void {
+			if(tmp_slidenums.length != 0) {
+				selectSlides(this.tmp_pinfo, this.tmp_slidenums);
+			}
+			else {
+				process.removeEventListener(NativeProcessExitEvent.EXIT, extractSlides);
+				exitPowerPoint();
+			}
+		}
+		
+		// Exit PowerPoint Application
+		public function exitPowerPoint():void {
+			var args:Vector.<String> = new Vector.<String>;
+			args.push(automatorDirPath + "/ExitPowerPoint.workflow");
+			process.appName = "automator";
+			process.arguments = args;
+			process.addEventListener(NativeProcessExitEvent.EXIT, finExitPowerPoint);
 			process.run();
 		}
 		
-		public function moveIn2Directory(orgpath:String, destpath:String):void {
-			orgpath = ".pdf"; // Add "pdf" extension on the filepaths
-			destpath = ".pdf";
-			trace(orgpath);
-			trace(destpath);
-			var original:File = new File(orgpath);
-			var destination:File = new File(destpath);
-			trace("original: " + original.exists);
-			trace("destination: " + destination.exists);
-			original.addEventListener(Event.COMPLETE, fileMoveCompleteHandler); 
-			original.addEventListener(IOErrorEvent.IO_ERROR, fileMoveIOErrorEventHandler); 
-			original.moveTo(destination,true);
-		}
+		////////////////////////////////////////////////////////////////////////////
+		// Private Functions
+		////////////////////////////////////////////////////////////////////////////
 		
-		
-		// Event Handlers
-		
-		private function finSearchPPTX(event:NativeProcessExitEvent):void {
-			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","FoundPPTX", null);
-			this.dispatchEvent(notificationEvent);
-		}
-		
-		private function finCreatePDFandImages(event:NativeProcessExitEvent):void {
-			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages", null); // For debug
-			this.divideUpPDFandImages(this.tmp_pptx_info);
-			//var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages", null);
-			this.dispatchEvent(notificationEvent);
-			//var notificationEvent2:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages",this.tmp_pptx_info);
-			//process.dispatchEvent(notificationEvent2);
-		}
-		
-		private function finMoveIn2Directory(event:NativeProcessExitEvent):void {
-			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","MovedIn2Direcotry", null);
-			this.dispatchEvent(notificationEvent);
-		}
-		
-		private function fileMoveCompleteHandler(event:Event):void { 
-			trace("Complete to move " + event.target); // [object File] 
-		} 
-		private function fileMoveIOErrorEventHandler(event:IOErrorEvent):void { 
-			trace("I/O Error.");  
-		} 
-		
-		
-		
+		// Divide up PDF and Images into each unique folder
 		private function divideUpPDFandImages(pptx_info:PPTXInfo):void {
-			//var pptx_info:PPTXInfo = event.value as PPTXInfo;
 			var presDir:File = File.applicationStorageDirectory.resolvePath("presentations");
 			
 			// Create a directory is named itseleves' md5.
@@ -114,6 +132,73 @@ package tools
 			moveIn2Directory(presDir.resolvePath("tmp_pdf").nativePath +"/" + pptx_info.filename, pdfDir.nativePath + "/" + pptx_info.filename);
 		}
 		
+		// Move pdf and images file into each unique folder from tmp folder
+		private function moveIn2Directory(orgpath:String, destpath:String):void {
+			orgpath = ".pdf"; // Add "pdf" extension on the filepaths
+			destpath = ".pdf";
+			trace(orgpath);
+			trace(destpath);
+			var original:File = new File(orgpath);
+			var destination:File = new File(destpath);
+			trace("original: " + original.exists);
+			trace("destination: " + destination.exists);
+			original.addEventListener(Event.COMPLETE, fileMoveCompleteHandler); 
+			original.addEventListener(IOErrorEvent.IO_ERROR, fileMoveIOErrorEventHandler); 
+			original.moveTo(destination,true);
+		}
 		
+		// Read lines
+		private function readLines(file:File):Array {
+			var stream:FileStream = new FileStream();
+			stream.open(file, FileMode.READ);
+			var str:String = stream.readMultiByte(file.size, File.systemCharset);
+			stream.close();
+			return str.split(/\n/);
+		}
+		
+		// Write str into the file.
+		private function writeText(file:File, str:String):void {
+			var stream:FileStream = new FileStream();
+			stream.open(file, FileMode.WRITE);
+			stream.writeUTFBytes(str);
+			stream.close();
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////
+		// Event Handlers
+		////////////////////////////////////////////////////////////////////////////
+
+		private function finSearchPPTX(event:NativeProcessExitEvent):void {
+			process.removeEventListener(NativeProcessExitEvent.EXIT, finSearchPPTX);
+			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","FoundPPTX", null);
+			this.dispatchEvent(notificationEvent);
+		}
+		
+		private function finCreatePDFandImages(event:NativeProcessExitEvent):void {
+			process.removeEventListener(NativeProcessExitEvent.EXIT, finCreatePDFandImages);
+			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages", null); // For debug
+			this.divideUpPDFandImages(this.tmp_pinfo);
+			this.dispatchEvent(notificationEvent);
+		}
+		
+		private function finMoveIn2Directory(event:NativeProcessExitEvent):void {
+			process.removeEventListener(NativeProcessExitEvent.EXIT, finMoveIn2Directory);
+			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","MovedIn2Direcotry", null);
+			this.dispatchEvent(notificationEvent);
+		}
+		
+		private function finExitPowerPoint(event:NativeProcessExitEvent):void {
+			process.removeEventListener(NativeProcessExitEvent.EXIT, finExitPowerPoint);
+			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","ExitedPowerPoint", null);
+			this.dispatchEvent(notificationEvent);
+		}
+		
+		private function fileMoveCompleteHandler(event:Event):void { 
+			trace("Complete to move " + event.target);
+		} 
+		private function fileMoveIOErrorEventHandler(event:IOErrorEvent):void { 
+			trace("I/O Error.");  
+		} 
 	}
 }

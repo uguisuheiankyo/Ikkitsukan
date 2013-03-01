@@ -20,7 +20,7 @@ package tools
 		// private variables
 		private var presDir:File;
 		private var automator:Automator;
-		private var tmp_pptx_info:Vector.<PPTXInfo>;
+		private var tmp_pinfos:Vector.<PPTXInfo>;
 		
 		// flags for first indexing
 	    private var flag_initialize:Boolean = false;
@@ -35,13 +35,20 @@ package tools
 		public function Indexing()
 		{
 			automator = new Automator();
-			tmp_pptx_info = new Vector.<PPTXInfo>;
+			tmp_pinfos = new Vector.<PPTXInfo>;
 		}
 		
-		// getter and setter
+		////////////////////////////////////////////////////////////////////////////
+		// Getter and Setter
+		////////////////////////////////////////////////////////////////////////////
+		
 		public function get allPPTXPaths():Array { return _allPPTXPaths; }
 		public function get pptx_infos():Vector.<PPTXInfo> { return _pptx_infos; }
 
+		////////////////////////////////////////////////////////////////////////////
+		// Executer and Handler Centre
+		////////////////////////////////////////////////////////////////////////////
+		
 		public function run():void {
 			
 			// Check the state in StorageDirectory
@@ -58,10 +65,11 @@ package tools
 			
 			// Renovate pptx_info file
 			else if(!flag_renovatePPTXInfo) renovatePPTXInfo();
+			
 		}
 		
-		
 		private function notificationEventHandler(event:NotificationEvent):void {
+			
 			trace(event.notification);
 			switch(event.notification) {
 				case "Initialized":
@@ -75,11 +83,15 @@ package tools
 				case "RenovatedPPTXInfo":
 					flag_renovatePPTXInfo = true; run(); break;
 				case "CreatedPDFandImages":
-					trace(this.tmp_pptx_info.length);
-					if(this.tmp_pptx_info.length != 0) { automator.createPDFandImages(tmp_pptx_info.pop()); }
+					if(this.tmp_pinfos.length != 0) { automator.createPDFandImages(tmp_pinfos.pop()); }
 					break;
 			}
+			
 		}
+		
+		////////////////////////////////////////////////////////////////////////////
+		// Public Functions
+		////////////////////////////////////////////////////////////////////////////
 		
 		// Check the state in StorageDirectory
 		public function initialize():void {
@@ -101,9 +113,8 @@ package tools
 			if(!pptx_info_txt.exists) {
 				writeText(pptx_info_txt,"");
 			}
-			
-			//
 			notificationEventHandler(new NotificationEvent("notificationEvent", "Initialized", null));
+
 		}
 		
 		// Find all PPTX files in this machine
@@ -119,6 +130,10 @@ package tools
 			trace("Find " + _allPPTXPaths.length + " files");
 			notificationEventHandler(new NotificationEvent("notificationEvent", "GotPPTXPaths", null));
 		}
+		
+		////////////////////////////////////////////////////////////////////////////
+		// Private Functions
+		////////////////////////////////////////////////////////////////////////////
 		
 		// Check pptx_infos with old pptx_infos
 		private function loadExistingPPTXInfo():void {
@@ -141,7 +156,7 @@ package tools
 					trace("Adding... " + pptx_path);
 					_pptx_infos.push(getPPTXInfo(pptx_path));
 					//automator.createPDFandImages(pptx_info);
-					this.tmp_pptx_info.push(pptx_info);
+					this.tmp_pinfos.push(pptx_info);
 				}
 			}
 			
@@ -174,7 +189,7 @@ package tools
 						_pptx_infos.splice(indexOfSameFilepath,indexOfSameFilepath);
 						_pptx_infos.push(pptx_info);
 						//automator.createPDFandImages(pptx_info);
-						this.tmp_pptx_info.push(pptx_info);
+						this.tmp_pinfos.push(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
 					else {
@@ -182,16 +197,17 @@ package tools
 						// need to add all pptx_info and create the pdf and images.
 						_pptx_infos.push(pptx_info);
 						//automator.createPDFandImages(pptx_info);
-						this.tmp_pptx_info.push(pptx_info);
+						this.tmp_pinfos.push(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
 				}
 			}
 			
 			// 2013-02-28
-			//automator.createPDFandImages(tmp_pptx_info.pop());	// For Debug 2013-03-01
-			this.tmp_pptx_info.length = 0; 							// For Debug 2013-03-01
+		    //this.tmp_pinfos.reverse();							// For Debug 2013-03-01
+			this.tmp_pinfos.length = 0; 							// For Debug 2013-03-01
 			this.flag_renovatePPTXInfo = true;
+			//automator.createPDFandImages(tmp_pinfos.pop());		// For Debug 2013-03-01
 			
 			// Write pptx_infos into the pptx_info file
 			writePPTXInfos(_pptx_infos);
@@ -260,9 +276,10 @@ package tools
 			stream.close();
 		}
 		
-		//////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////
 		// pptx_infosのクラス化の必要あり
-		//////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////
+		
 		private function hasSameMD5(md5:String):int {
 			for( var i:int = _pptx_infos.length-1; i >= 0; i--) {
 				if( md5 == _pptx_infos[i].md5 ) {

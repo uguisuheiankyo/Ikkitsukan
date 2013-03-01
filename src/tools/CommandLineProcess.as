@@ -56,8 +56,6 @@ package tools
 			
 			// 引数指定
 			var args:Vector.<String> = _arguments;
-			//var args:Vector.<String> = new Vector.<String>();
-			//args.push(_arguments);
 			
 			// 実行情報の指定
 			nativeProcessStartupInfo.executable = appFile;
@@ -65,7 +63,6 @@ package tools
 			
 			// リスナー
 			process.addEventListener(NativeProcessExitEvent.EXIT, relay);
-			
 			process.addEventListener(ProgressEvent.STANDARD_OUTPUT_DATA, onOutputData);
 			process.addEventListener(ProgressEvent.STANDARD_ERROR_DATA, onErrorData);
 			process.addEventListener(NativeProcessExitEvent.EXIT, onExit);
