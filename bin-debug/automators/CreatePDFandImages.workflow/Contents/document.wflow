@@ -21,6 +21,114 @@
 					<false/>
 					<key>Types</key>
 					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>variableUUID</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<false/>
+						<key>selectedVariableUUID</key>
+						<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action</string>
+				<key>ActionName</key>
+				<string>変数の値を設定</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>variableUUID</key>
+					<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.Set_Value_of_Variable</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>Set_Value_of_Variable</string>
+				<key>InputUUID</key>
+				<string>C5015DC0-3EA3-4E6E-9341-F4CB03ECEB05</string>
+				<key>Keywords</key>
+				<array>
+					<string>変数</string>
+					<string>バインド</string>
+					<string>入力</string>
+					<string>出力</string>
+					<string>記憶装置</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>8C9B82C5-F2DF-42FA-897F-A6BB846ED92A</string>
+				<key>UUID</key>
+				<string>C228D573-9C39-4D71-9CCD-3574A3CB3300</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>variableUUID</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>399.000000:1209.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
 						<string>com.apple.applescript.alias-object</string>
 					</array>
 				</dict>
@@ -114,7 +222,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>447.000000:883.000000</string>
+				<string>399.000000:1104.000000</string>
 				<key>nibPath</key>
 				<string>/Library/Automator/Convert Format of PowerPoint Presentations.action/Contents/Resources/ja.lproj/main.nib</string>
 			</dict>
@@ -148,7 +256,7 @@
 						<key>isPathPopUp</key>
 						<false/>
 						<key>selectedVariableUUID</key>
-						<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
+						<string>32D9768A-EA91-4D3F-8D08-5EDC285FD7AD</string>
 						<key>variableUUIDsInMenu</key>
 						<array/>
 					</dict>
@@ -171,7 +279,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>variableUUID</key>
-					<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
+					<string>32D9768A-EA91-4D3F-8D08-5EDC285FD7AD</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.Set_Value_of_Variable</string>
@@ -224,7 +332,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>447.000000:773.000000</string>
+				<string>399.000000:994.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -395,7 +503,7 @@
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>447.000000:668.000000</string>
+				<string>399.000000:889.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -505,9 +613,210 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>447.000000:626.000000</string>
+				<string>399.000000:847.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>variableUUID</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<false/>
+						<key>selectedVariableUUID</key>
+						<string>32D9768A-EA91-4D3F-8D08-5EDC285FD7AD</string>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Value of Variable.action</string>
+				<key>ActionName</key>
+				<string>変数の値を取得</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>variableUUID</key>
+					<string>32D9768A-EA91-4D3F-8D08-5EDC285FD7AD</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.Get_Value_of_Variable</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>Get_Value_of_Variable</string>
+				<key>IgnoresInput</key>
+				<true/>
+				<key>InputUUID</key>
+				<string>6A4C8032-A1E6-4F28-8640-B4260D88D2BC</string>
+				<key>Keywords</key>
+				<array>
+					<string>変数</string>
+					<string>バインド</string>
+					<string>入力</string>
+					<string>出力</string>
+					<string>記憶装置</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>AC7EFEA5-E251-4B0C-B68F-ADE9E8312AA5</string>
+				<key>UUID</key>
+				<string>0E6EF331-A175-42B1-B3A8-A9F64DD744E2</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>variableUUID</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>399.000000:742.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict/>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>14.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Close PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>PowerPoint プレゼンテーションを閉じる</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Close_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>D447D7F4-FEF4-4FC7-B333-DDAC2468A064</string>
+				<key>Keywords</key>
+				<array>
+					<string>終了</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>A53CC89F-14AC-4FDF-8B88-2F5C4FFC4380</string>
+				<key>UUID</key>
+				<string>2FCFA5A1-DC52-4AB3-B0A5-A3677FA0F3B3</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>399.000000:639.000000</string>
+				<key>nibPath</key>
+				<string>/Library/Automator/Close PowerPoint Presentations.action/Contents/Resources/ja.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -638,7 +947,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>447.000000:521.000000</string>
+				<string>399.000000:572.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/New Folder.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -743,12 +1052,10 @@
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>447.000000:337.000000</string>
+				<string>399.000000:442.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -782,7 +1089,7 @@
 						<key>isPathPopUp</key>
 						<false/>
 						<key>selectedVariableUUID</key>
-						<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
+						<string>32D9768A-EA91-4D3F-8D08-5EDC285FD7AD</string>
 						<key>variableUUIDsInMenu</key>
 						<array/>
 					</dict>
@@ -805,7 +1112,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>variableUUID</key>
-					<string>3EC08D3E-50B6-407B-8759-CBC92D0077A5</string>
+					<string>32D9768A-EA91-4D3F-8D08-5EDC285FD7AD</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.Get_Value_of_Variable</string>
@@ -835,8 +1142,6 @@
 				</array>
 				<key>OutputUUID</key>
 				<string>93F4E236-8EBE-4CE9-BE03-4C9F022F0EC3</string>
-				<key>StartAction</key>
-				<false/>
 				<key>UUID</key>
 				<string>52F394A2-F09C-44A0-99D7-1DDC8DBB115B</string>
 				<key>UnlocalizedApplications</key>
@@ -862,7 +1167,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>447.000000:232.000000</string>
+				<string>399.000000:337.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Japanese.lproj/main.nib</string>
 			</dict>
@@ -983,14 +1288,107 @@
 						<string>1</string>
 					</dict>
 				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>399.000000:234.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Move Finder Items.action/Contents/Resources/Japanese.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict/>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>14.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Close PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>PowerPoint プレゼンテーションを閉じる</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Close_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>IgnoresInput</key>
+				<true/>
+				<key>InputUUID</key>
+				<string>D780613D-CC9B-4ABD-9B31-2F24FC878292</string>
+				<key>Keywords</key>
+				<array>
+					<string>終了</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>6B3C81E0-6588-484C-999F-08CD1D8CC73A</string>
+				<key>UUID</key>
+				<string>77EFC016-D69F-4534-B2E2-90CB892ADAB2</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
 				<key>conversionLabel</key>
 				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>447.000000:129.000000</string>
+				<string>399.000000:131.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Move Finder Items.action/Contents/Resources/Japanese.lproj/main.nib</string>
+				<string>/Library/Automator/Close PowerPoint Presentations.action/Contents/Resources/ja.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -998,54 +1396,82 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>16F9F85F-3B5E-433D-8EB1-3E4854A70CD0</key>
+		<key>0BB0BAC5-1D9A-4831-B97C-FBBE53D25F82</key>
 		<dict>
 			<key>from</key>
-			<string>A3DCB307-CFF4-4C57-B175-2C2F71B69AA7 - A3DCB307-CFF4-4C57-B175-2C2F71B69AA7</string>
-			<key>to</key>
-			<string>52F394A2-F09C-44A0-99D7-1DDC8DBB115B - 52F394A2-F09C-44A0-99D7-1DDC8DBB115B</string>
-		</dict>
-		<key>4BE7D411-CE2F-4BEE-B7CD-24E6F3B06D46</key>
-		<dict>
-			<key>from</key>
-			<string>B909CC41-54E5-47D9-80DE-34B93D244349 - B909CC41-54E5-47D9-80DE-34B93D244349</string>
+			<string>2FCFA5A1-DC52-4AB3-B0A5-A3677FA0F3B3 - 2FCFA5A1-DC52-4AB3-B0A5-A3677FA0F3B3</string>
 			<key>to</key>
 			<string>A85B77D1-B2FE-4D0A-A57E-31577712C443 - A85B77D1-B2FE-4D0A-A57E-31577712C443</string>
 		</dict>
-		<key>504D43F8-ACF1-443A-A67D-4F0A70E34985</key>
+		<key>1C6647C6-895A-49DF-94BC-6D5A747D2824</key>
 		<dict>
 			<key>from</key>
 			<string>12C5BB65-1591-4E02-94A1-E29C81420CA7 - 12C5BB65-1591-4E02-94A1-E29C81420CA7</string>
 			<key>to</key>
 			<string>B909CC41-54E5-47D9-80DE-34B93D244349 - B909CC41-54E5-47D9-80DE-34B93D244349</string>
 		</dict>
-		<key>604023FC-4C76-4E8E-AC07-660D8E2D4087</key>
+		<key>39872BFE-B2F1-4489-BA00-77E91FA71071</key>
+		<dict>
+			<key>from</key>
+			<string>91D3884F-C2A9-4E80-949B-9E14FF18BDFE - 91D3884F-C2A9-4E80-949B-9E14FF18BDFE</string>
+			<key>to</key>
+			<string>77EFC016-D69F-4534-B2E2-90CB892ADAB2 - 77EFC016-D69F-4534-B2E2-90CB892ADAB2</string>
+		</dict>
+		<key>557DFAB9-567A-4D3B-AEFD-E2EC1C1FD792</key>
+		<dict>
+			<key>from</key>
+			<string>AD97D080-5EEA-4954-A1CA-A1697AA6EEA3 - AD97D080-5EEA-4954-A1CA-A1697AA6EEA3</string>
+			<key>to</key>
+			<string>12C5BB65-1591-4E02-94A1-E29C81420CA7 - 12C5BB65-1591-4E02-94A1-E29C81420CA7</string>
+		</dict>
+		<key>67382E87-2324-4C46-94F4-DBAFFF4793DC</key>
+		<dict>
+			<key>from</key>
+			<string>0E6EF331-A175-42B1-B3A8-A9F64DD744E2 - 0E6EF331-A175-42B1-B3A8-A9F64DD744E2</string>
+			<key>to</key>
+			<string>2FCFA5A1-DC52-4AB3-B0A5-A3677FA0F3B3 - 2FCFA5A1-DC52-4AB3-B0A5-A3677FA0F3B3</string>
+		</dict>
+		<key>8AA4782E-2F12-4FF2-99D3-258D191EB6B3</key>
+		<dict>
+			<key>from</key>
+			<string>B909CC41-54E5-47D9-80DE-34B93D244349 - B909CC41-54E5-47D9-80DE-34B93D244349</string>
+			<key>to</key>
+			<string>0E6EF331-A175-42B1-B3A8-A9F64DD744E2 - 0E6EF331-A175-42B1-B3A8-A9F64DD744E2</string>
+		</dict>
+		<key>934C1CE1-4938-4503-9556-73DD944EE3C9</key>
+		<dict>
+			<key>from</key>
+			<string>C228D573-9C39-4D71-9CCD-3574A3CB3300 - C228D573-9C39-4D71-9CCD-3574A3CB3300</string>
+			<key>to</key>
+			<string>CB032E1A-E217-40FE-84DB-22422109BC57 - CB032E1A-E217-40FE-84DB-22422109BC57</string>
+		</dict>
+		<key>A7F4A2BF-A597-4335-923F-62D7CEBF0DA1</key>
 		<dict>
 			<key>from</key>
 			<string>52F394A2-F09C-44A0-99D7-1DDC8DBB115B - 52F394A2-F09C-44A0-99D7-1DDC8DBB115B</string>
 			<key>to</key>
 			<string>91D3884F-C2A9-4E80-949B-9E14FF18BDFE - 91D3884F-C2A9-4E80-949B-9E14FF18BDFE</string>
 		</dict>
-		<key>8DA9C1BD-8B3B-4192-B111-159FBEBB17C1</key>
+		<key>AA94C405-1BA4-4530-8897-824CB7BB943F</key>
 		<dict>
 			<key>from</key>
-			<string>AD97D080-5EEA-4954-A1CA-A1697AA6EEA3 - AD97D080-5EEA-4954-A1CA-A1697AA6EEA3</string>
+			<string>A3DCB307-CFF4-4C57-B175-2C2F71B69AA7 - A3DCB307-CFF4-4C57-B175-2C2F71B69AA7</string>
 			<key>to</key>
-			<string>12C5BB65-1591-4E02-94A1-E29C81420CA7 - 12C5BB65-1591-4E02-94A1-E29C81420CA7</string>
+			<string>52F394A2-F09C-44A0-99D7-1DDC8DBB115B - 52F394A2-F09C-44A0-99D7-1DDC8DBB115B</string>
 		</dict>
-		<key>C5CEE14D-2235-4A08-8F0F-33546FF32B01</key>
-		<dict>
-			<key>from</key>
-			<string>CB032E1A-E217-40FE-84DB-22422109BC57 - CB032E1A-E217-40FE-84DB-22422109BC57</string>
-			<key>to</key>
-			<string>AD97D080-5EEA-4954-A1CA-A1697AA6EEA3 - AD97D080-5EEA-4954-A1CA-A1697AA6EEA3</string>
-		</dict>
-		<key>FF9245F3-AB7F-4E0A-8FDC-235D060CCC4F</key>
+		<key>B4429A4A-FC48-438D-9363-58CCC4623DC1</key>
 		<dict>
 			<key>from</key>
 			<string>A85B77D1-B2FE-4D0A-A57E-31577712C443 - A85B77D1-B2FE-4D0A-A57E-31577712C443</string>
 			<key>to</key>
 			<string>A3DCB307-CFF4-4C57-B175-2C2F71B69AA7 - A3DCB307-CFF4-4C57-B175-2C2F71B69AA7</string>
+		</dict>
+		<key>BF0E0FBD-E6B0-4217-A2C9-51D6762BAABB</key>
+		<dict>
+			<key>from</key>
+			<string>CB032E1A-E217-40FE-84DB-22422109BC57 - CB032E1A-E217-40FE-84DB-22422109BC57</string>
+			<key>to</key>
+			<string>AD97D080-5EEA-4954-A1CA-A1697AA6EEA3 - AD97D080-5EEA-4954-A1CA-A1697AA6EEA3</string>
 		</dict>
 	</dict>
 	<key>variables</key>
@@ -1077,6 +1503,14 @@
 			<string>tmpDir</string>
 			<key>value</key>
 			<string>~/Desktop</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>32D9768A-EA91-4D3F-8D08-5EDC285FD7AD</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Storage</string>
+			<key>name</key>
+			<string>pdf</string>
 		</dict>
 	</array>
 	<key>workflowMetaData</key>

@@ -9,7 +9,9 @@ package tools
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
-
+	import flash.utils.setTimeout;
+	import flash.utils.clearTimeout;
+	
 	public class Automator extends EventDispatcher
 	{
 		private var process:CommandLineProcess;
@@ -18,6 +20,8 @@ package tools
 		private var tmp_pinfo:PPTXInfo;
 		private var tmp_slidenums:Vector.<Number>;
 		private var automatorDirPath:String = File.applicationDirectory.resolvePath("automators").nativePath;
+		
+		private var timeoutID:uint;
 		
 		public function Automator()
 		{
@@ -50,6 +54,7 @@ package tools
 			process.appName = "automator";
 			process.arguments = args;
 			process.addEventListener(NativeProcessExitEvent.EXIT, finCreatePDFandImages);
+			timeoutID = setTimeout(stopProcess, 10000);
 			process.run();
 			this.tmp_pinfo = pptx_info;
 		}
@@ -142,10 +147,17 @@ package tools
 			trace(destpath);
 			trace("original: " + original.exists);
 			trace("destination: " + destination.exists);
-			if(!original.exists) { return; }
+			
+			if(!original.exists) { 
+				original = new File(orgpath.substr(0,orgpath.length-4) + "1.pdf");
+				if(original.exists) {
+					trace("The pptx file name is added '1' on the tail");
+				}
+				else return;
+			}
 			original.addEventListener(Event.COMPLETE, fileMoveCompleteHandler); 
 			original.addEventListener(IOErrorEvent.IO_ERROR, fileMoveIOErrorEventHandler); 
-			original.moveTo(destination,true);
+			original.moveToAsync(destination,true);
 		}
 		
 		// Read lines
@@ -165,6 +177,11 @@ package tools
 			stream.close();
 		}
 		
+		// Stop process
+		private function stopProcess():void {
+			process.stop();
+			trace("Killed timeout process.");
+		}
 		
 		////////////////////////////////////////////////////////////////////////////
 		// Event Handlers
@@ -181,6 +198,7 @@ package tools
 			var notificationEvent:NotificationEvent = new NotificationEvent("notificationEvent","CreatedPDFandImages", null); // For debug
 			this.divideUpPDFandImages(this.tmp_pinfo);
 			this.dispatchEvent(notificationEvent);
+			clearTimeout(timeoutID);
 		}
 		
 		private function finMoveIn2Directory(event:NativeProcessExitEvent):void {
@@ -195,7 +213,7 @@ package tools
 			this.dispatchEvent(notificationEvent);
 		}
 		
-		private function fileMoveCompleteHandler(event:Event):void { 
+		private function fileMoveCompleteHandler(event:Event):void {
 			trace("Complete to move " + event.target);
 		} 
 		private function fileMoveIOErrorEventHandler(event:IOErrorEvent):void { 

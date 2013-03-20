@@ -73,6 +73,11 @@ package tools
 			process.start(nativeProcessStartupInfo);
 		}
 		
+		// stop process
+		public function stop():void {
+			process.exit(true);
+		}
+		
 		// Dispatch Events to the NativeApplication 
 		public function relay(event:Event):void{
 			this.dispatchEvent(event);
