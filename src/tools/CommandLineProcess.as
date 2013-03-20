@@ -83,6 +83,8 @@ package tools
 			switch(appName) {
 				case "automator":
 					return "/usr/bin/automator";
+				case "open":
+					return "/usr/bin/open";
 				case "mv":
 					return "/bin/mv";
 				case "say":

@@ -134,14 +134,15 @@ package tools
 		
 		// Move pdf and images file into each unique folder from tmp folder
 		private function moveIn2Directory(orgpath:String, destpath:String):void {
-			orgpath = ".pdf"; // Add "pdf" extension on the filepaths
-			destpath = ".pdf";
-			trace(orgpath);
-			trace(destpath);
+			orgpath += ".pdf"; // Add "pdf" extension on the filepaths
+			destpath += ".pdf";
 			var original:File = new File(orgpath);
 			var destination:File = new File(destpath);
+			trace(orgpath);
+			trace(destpath);
 			trace("original: " + original.exists);
 			trace("destination: " + destination.exists);
+			if(!original.exists) { return; }
 			original.addEventListener(Event.COMPLETE, fileMoveCompleteHandler); 
 			original.addEventListener(IOErrorEvent.IO_ERROR, fileMoveIOErrorEventHandler); 
 			original.moveTo(destination,true);

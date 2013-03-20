@@ -17,21 +17,9 @@ import tools.PPTXInfo;
 private var process:CommandLineProcess;
 
 protected function windowedapplication1_windowCompleteHandler(event:AIREvent):void
-{
-	var pptx_info:PPTXInfo = new PPTXInfo();
-	pptx_info.md5 = "AAAA";
-	pptx_info.filepath = "/Users/Hiroyuki/Desktop/プレゼンテーション2.pptx";
-	pptx_info.filename = "プレゼンテーション2";
-	pptx_info.date = new Date();
-	var slidenums:Vector.<Number> = new Vector.<Number>;
-	slidenums.push(1);
-	slidenums.push(3);
-	slidenums.reverse();
-	new Automator().selectSlides(pptx_info, slidenums);
-	
-	
-//	var indexing:Indexing = new Indexing();
-//	indexing.run();
+{	
+	var indexing:Indexing = new Indexing();
+	indexing.run();
 }
 
 private function loadPDF():void {

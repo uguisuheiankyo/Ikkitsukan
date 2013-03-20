@@ -84,6 +84,7 @@ package tools
 					flag_renovatePPTXInfo = true; run(); break;
 				case "CreatedPDFandImages":
 					if(this.tmp_pinfos.length != 0) { automator.createPDFandImages(tmp_pinfos.pop()); }
+					else { automator.exitPowerPoint(); }
 					break;
 			}
 			
@@ -127,7 +128,8 @@ package tools
 		public function getPPTXPaths():void {
 			var file:File = presDir.resolvePath("pptx_paths.txt");
 			_allPPTXPaths = readLines(file);
-			trace("Find " + _allPPTXPaths.length + " files");
+			trace("allPPTXPaths: " + this._allPPTXPaths);
+			trace("Found " + _allPPTXPaths.length + " files");
 			notificationEventHandler(new NotificationEvent("notificationEvent", "GotPPTXPaths", null));
 		}
 		
@@ -150,18 +152,18 @@ package tools
 			// If the pptx_info file is empty,
 			// all pptx files will be registered into pptx_info
 			var pptx_path:String;
+			var pptx_info:PPTXInfo;
 			if(_pptx_infos == null) {
 				_pptx_infos = new Vector.<PPTXInfo>;
 				for each( pptx_path in _allPPTXPaths) {
-					trace("Adding... " + pptx_path);
-					_pptx_infos.push(getPPTXInfo(pptx_path));
-					//automator.createPDFandImages(pptx_info);
+					pptx_info = getPPTXInfo(pptx_path);
+					_pptx_infos.push(pptx_info);
 					this.tmp_pinfos.push(pptx_info);
+					trace("Adding... " + pptx_path);
 				}
 			}
 			
 			else {
-				var pptx_info:PPTXInfo;
 				var indexOfSameMD5:int;
 				var indexOfSameFilepath:int;
 				for each(pptx_path in _allPPTXPaths) {
@@ -188,7 +190,6 @@ package tools
 						// because the previous file had the same filepath was edited or deleted.
 						_pptx_infos.splice(indexOfSameFilepath,indexOfSameFilepath);
 						_pptx_infos.push(pptx_info);
-						//automator.createPDFandImages(pptx_info);
 						this.tmp_pinfos.push(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
@@ -196,18 +197,16 @@ package tools
 						// old pptx_info file doesn't have this pptx_info.
 						// need to add all pptx_info and create the pdf and images.
 						_pptx_infos.push(pptx_info);
-						//automator.createPDFandImages(pptx_info);
 						this.tmp_pinfos.push(pptx_info);
 						trace("Adding... " + pptx_info.filepath);
 					}
 				}
 			}
 			
-			// 2013-02-28
-		    //this.tmp_pinfos.reverse();							// For Debug 2013-03-01
-			this.tmp_pinfos.length = 0; 							// For Debug 2013-03-01
+			// Create a pdf and images from the pptx
+		    this.tmp_pinfos.reverse();
 			this.flag_renovatePPTXInfo = true;
-			//automator.createPDFandImages(tmp_pinfos.pop());		// For Debug 2013-03-01
+			notificationEventHandler(new NotificationEvent("notificationEvent", "CreatedPDFandImages", null));
 			
 			// Write pptx_infos into the pptx_info file
 			writePPTXInfos(_pptx_infos);

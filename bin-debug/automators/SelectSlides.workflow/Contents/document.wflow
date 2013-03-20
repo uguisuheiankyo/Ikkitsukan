@@ -272,11 +272,11 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>fromSlide</key>
-					<real>3</real>
+					<real>2</real>
 					<key>selectionOption</key>
 					<integer>4</integer>
 					<key>toSlide</key>
-					<real>3</real>
+					<real>2</real>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.microsoft.Automator.Select_PowerPoint_Slides</string>
@@ -992,19 +992,6 @@
 	</dict>
 </dict>
 </plist>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
